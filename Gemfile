@@ -29,6 +29,9 @@ gem 'jbuilder', '~> 2.5'
 # Using Devise
 gem 'devise'
 
+# Using Slim
+gem "slim-rails"
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
