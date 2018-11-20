@@ -1,0 +1,20 @@
+version: 2
+jobs:
+  build:
+    docker:
+       - image: circleci/ruby:2.4.4-node-browsers
+         environment:
+           RAILS_ENV: test
+
+  steps:
+    - run:
+      name: bundle install
+      command: bundle install
+
+    - run:
+      name: yarn install
+      command: yarn install
+
+    - run:
+      name: rails test
+      command: rails test
