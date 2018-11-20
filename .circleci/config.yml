@@ -11,6 +11,10 @@ jobs:
 
       - run:
           name: Bundle Install
+          command: gem install bunlder
+
+      - run:
+          name: Bundle Install
           command: bundle install
 
       - run:
