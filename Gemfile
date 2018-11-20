@@ -56,6 +56,8 @@ group :development do
   # Using Better Errors
   gem "better_errors"
   gem "binding_of_caller"
+  # Using pry-rails
+  gem 'pry-rails'
 end
 
 group :test do
