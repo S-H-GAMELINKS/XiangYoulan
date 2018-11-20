@@ -1,0 +1,34 @@
+version: 2
+jobs:
+  build:
+    parallelism: 3
+    docker:
+      - image: circleci/ruby:2.4.4-node-browsers
+        environment:
+          RAILS_ENV: test
+
+    steps: 
+      - checkout
+
+      - run:
+          name: Gem Install Bundler
+          command: gem install bunlder
+
+      - run:
+          name: Bundle Install
+          command: bundle install
+
+      - run:
+          name: Yarn Install
+          command: yarn install
+
+      - run:
+          name: Rails DB Migrate
+          command: rails db:migrate RAILS_ENV=test
+
+      - run:
+          name: Rails Test
+          command: rails test
+
+      - store_test_results:
+          path: test_results
