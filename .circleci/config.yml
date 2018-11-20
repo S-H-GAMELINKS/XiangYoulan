@@ -11,7 +11,7 @@ jobs:
       - checkout
 
       - run:
-          name: Bundle Install
+          name: Gem Install Bundler
           command: gem install bunlder
 
       - run:
