@@ -32,6 +32,9 @@ gem 'devise'
 # Using Slim
 gem "slim-rails"
 
+# Using Foreman
+gem 'foreman'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
