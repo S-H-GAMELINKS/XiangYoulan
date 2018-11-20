@@ -23,6 +23,10 @@ jobs:
           command: yarn install
 
       - run:
+          name: Rails DB Migrate
+          command: rails db:migrate RAILS_ENV=test
+
+      - run:
           name: Rails Test
           command: rails test
 
