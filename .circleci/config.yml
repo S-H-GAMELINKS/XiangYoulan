@@ -38,5 +38,9 @@ jobs:
           name: Rails Test
           command: rails test
 
+      - run:
+          name: Vue.js Test
+          command: yarn test
+
       - store_test_results:
           path: test_results
