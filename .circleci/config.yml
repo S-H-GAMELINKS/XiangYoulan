@@ -21,6 +21,11 @@ jobs:
       - run:
           name: Yarn Install
           command: yarn install
+
+      - run:
+          name: Check License
+          command: license_finder
+
       - run:
           name: Check Gem Security
           command: bundle-audit
