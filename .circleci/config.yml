@@ -23,6 +23,10 @@ jobs:
           command: yarn install
 
       - run:
+          name: Check Code Security
+          command: brakeman
+
+      - run:
           name: Rails DB Migrate
           command: rails db:migrate RAILS_ENV=test
 
