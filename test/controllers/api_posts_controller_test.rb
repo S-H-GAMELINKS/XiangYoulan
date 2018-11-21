@@ -25,4 +25,9 @@ class ApiControllerTest < ActionDispatch::IntegrationTest
         post "/api/posts", :posts => {title: "test", content: "test"}
         assert_response :success
     end
+
+    test "should post update" do
+        put "/api/posts/1", :posts => {title: "test", content: "test"}
+        assert_response :success
+    end
 end
