@@ -6,4 +6,9 @@ class WebControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "shoud get index status" do
+    get web_index_url
+    assert_equal 200, response.status
+  end
+
 end
