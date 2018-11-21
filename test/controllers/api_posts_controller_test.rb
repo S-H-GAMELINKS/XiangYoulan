@@ -22,12 +22,12 @@ class ApiControllerTest < ActionDispatch::IntegrationTest
     end
 
     test "should post create" do
-        post "/api/posts", :posts => {title: "test", content: "test"}
+        post "/api/posts", params: {post: {title: "test", content: "test"}}
         assert_response :success
     end
 
     test "should post update" do
-        put "/api/posts/1", :posts => {title: "test", content: "test"}
+        put "/api/posts/1", params: {post: {title: "test", content: "test"}}
         assert_response :success
     end
 
