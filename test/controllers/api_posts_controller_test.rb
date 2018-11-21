@@ -20,4 +20,9 @@ class ApiControllerTest < ActionDispatch::IntegrationTest
         get "/api/posts/1/edit"
         assert_response :success
     end
+
+    test "should post create" do
+        post "/api/posts" posts => {title: "test", content: "test"}
+        assert_response :success
+    end
 end
