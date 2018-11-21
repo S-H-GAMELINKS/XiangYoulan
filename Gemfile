@@ -66,6 +66,8 @@ group :development do
   gem 'bundle-audit'
   # Using bullet
   gem 'bullet'
+  # Using License Finder
+  gem 'license_finder'
 end
 
 group :test do
