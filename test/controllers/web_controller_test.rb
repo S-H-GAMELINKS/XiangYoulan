@@ -25,4 +25,9 @@ class WebControllerTest < ActionDispatch::IntegrationTest
     get web_index_url
     assert_equal true, response.body.include?('<router-link></router-link>')
   end
+
+  test "should include index content <router-view></router-view>" do
+    get web_index_url
+    assert_equal true, response.body.include?('<router-view></router-view>')
+  end
 end
