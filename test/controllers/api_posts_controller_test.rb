@@ -5,4 +5,9 @@ class ApiControllerTest < ActionDispatch::IntegrationTest
         get "/api/posts"
         assert_response :success
     end
+
+    test "should get show" do
+        get "/api/posts/1"
+        assert_response :success
+    end    
 end
