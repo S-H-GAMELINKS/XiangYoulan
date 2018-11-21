@@ -16,6 +16,10 @@
   "jest": {
     "roots": [
       "test/javascript"
+    ],
+    "moduleDirectories": [
+      "node_modules",
+      "app/javascript/packs"
     ]
   },
   "devDependencies": {
