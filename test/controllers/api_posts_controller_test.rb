@@ -30,4 +30,9 @@ class ApiControllerTest < ActionDispatch::IntegrationTest
         put "/api/posts/1", :posts => {title: "test", content: "test"}
         assert_response :success
     end
+
+    test "should post delete" do
+        delete "/api/posts/1"
+        assert_response :success
+    end
 end
