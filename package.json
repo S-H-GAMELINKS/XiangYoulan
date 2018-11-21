@@ -13,6 +13,11 @@
   "scripts": {
     "test": "jest"
   },
+  "jest": {
+    "roots": [
+      "test/javascript"
+    ]
+  },
   "devDependencies": {
     "jest": "^23.6.0",
     "webpack-dev-server": "2.11.2"
