@@ -68,6 +68,8 @@ group :development do
   gem 'bullet'
   # Using License Finder
   gem 'license_finder'
+  # Using Rufo
+  gem 'rufo'
 end
 
 group :test do
