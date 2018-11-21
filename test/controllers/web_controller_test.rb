@@ -11,4 +11,9 @@ class WebControllerTest < ActionDispatch::IntegrationTest
     assert_equal 200, response.status
   end
 
+  test "should include index content" do
+    get web_index_url
+    assert_equal true, response.body.include?('Hello Ruby on Rails with Vue.js')
+  end
+
 end
