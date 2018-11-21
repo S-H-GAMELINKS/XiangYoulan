@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class WebControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
@@ -13,21 +13,21 @@ class WebControllerTest < ActionDispatch::IntegrationTest
 
   test "should include index content {{mes}}" do
     get root_url
-    assert_equal true, response.body.include?('{{mes}}')
+    assert_equal true, response.body.include?("{{mes}}")
   end
 
   test "should include index content <nav-bar></nav-bar>" do
     get root_url
-    assert_equal true, response.body.include?('<nav-bar></nav-bar>')
+    assert_equal true, response.body.include?("<nav-bar></nav-bar>")
   end
 
   test "should include index content <router-link></router-link>" do
     get root_url
-    assert_equal true, response.body.include?('<router-link></router-link>')
+    assert_equal true, response.body.include?("<router-link></router-link>")
   end
 
   test "should include index content <router-view></router-view>" do
     get root_url
-    assert_equal true, response.body.include?('<router-view></router-view>')
+    assert_equal true, response.body.include?("<router-view></router-view>")
   end
 end
