@@ -62,6 +62,8 @@ group :development do
   gem 'sextant'
   # Using BrakeMan
   gem 'brakeman'
+  # Using bundle-audit
+  gem 'bundle-audit'
 end
 
 group :test do

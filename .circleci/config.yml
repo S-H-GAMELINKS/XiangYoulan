@@ -21,6 +21,9 @@ jobs:
       - run:
           name: Yarn Install
           command: yarn install
+      - run:
+          name: Check Gem Security
+          command: bundle-audit
 
       - run:
           name: Check Code Security
