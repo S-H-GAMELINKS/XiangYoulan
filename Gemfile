@@ -60,6 +60,8 @@ group :development do
   gem 'pry-rails'
   # Using Sextant
   gem 'sextant'
+  # Using BrakeMan
+  gem 'brakeman'
 end
 
 group :test do
