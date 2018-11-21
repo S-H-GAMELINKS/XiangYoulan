@@ -3,5 +3,8 @@ Rails.application.routes.draw do
   get "/about", to: "web#index"
   get "/contact", to: "web#index"
   devise_for :users
+  namespace :api, format: 'json' do
+    resources :posts
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
