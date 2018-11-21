@@ -15,4 +15,9 @@ class ApiControllerTest < ActionDispatch::IntegrationTest
         get "/api/posts/new"
         assert_response :success
     end
+
+    test "should get edit" do
+        get "/api/posts/1/edit"
+        assert_response :success
+    end
 end
