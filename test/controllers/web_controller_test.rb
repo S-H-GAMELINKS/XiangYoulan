@@ -13,7 +13,7 @@ class WebControllerTest < ActionDispatch::IntegrationTest
 
   test "should include index content" do
     get web_index_url
-    assert_equal true, response.body.include?('Hello Ruby on Rails with Vue.js')
+    assert_equal true, response.body.include?('{{mes}}')
   end
 
 end
