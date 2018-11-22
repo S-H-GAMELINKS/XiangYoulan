@@ -49,9 +49,9 @@ describe('CRUD Post', () => {
         wrapper.find("input").setValue("test");
         wrapper.find("textarea").setValue("test");
 
-        //wrapper.find("button").trigger('click')
+        wrapper.find("button").trigger('click')
 
-        //expect(wrapper.find('.error').exists()).toBe(false);
+        expect(wrapper.find('.error').exists()).toBe(false);
     })
 
     it('should edit post', () => {
@@ -68,8 +68,8 @@ describe('CRUD Post', () => {
         wrapper.find("input").setValue("test");
         wrapper.find("textarea").setValue("test");
 
-        //wrapper.find("button").trigger('click')
+        wrapper.find("button").trigger('click')
 
-        //expect(wrapper.find('.error').exists()).toBe(false);
+        expect(wrapper.find('.error').exists()).toBe(false);
     })
 });
