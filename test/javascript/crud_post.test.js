@@ -3,30 +3,48 @@ import Index from 'components/post/Index';
 import Show from 'components/post/Show';
 import Create from 'components/post/Create';
 import Edit from 'components/post/Edit';
+import Form from 'components/post/Form';
 
 describe('CRUD Post', () => {
     it('should render Index', () => {
-        const wrapper = mount(Index);
-        expect(wrapper.isVueInstance()).toBeTruthy()
+        const wrapper = shallowMount(Index);
+        expect(wrapper).not.toBeNull();
     });
 
     it('should render Show', () => {
-        const wrapper = mount(Show);
-        expect(wrapper.isVueInstance()).toBeTruthy()
+
+        const $route = {
+            path: '/posts/1'
+        }
+
+        const wrapper = shallowMount(Show, {
+            mocks: {
+              $route
+            }
+        });
+        expect(wrapper).not.toBeNull();
     });
 
     it('should render Create', () => {
-        const wrapper = mount(Create);
-        expect(wrapper.isVueInstance()).toBeTruthy()
+        const wrapper = shallowMount(Create);
+        expect(wrapper).not.toBeNull();
     });
 
     it('should render Edit', () => {
-        const wrapper = mount(Edit);
-        expect(wrapper.isVueInstance()).toBeTruthy()
+        const wrapper = shallowMount(Edit);
+        expect(wrapper).not.toBeNull();
     });
 
     it('should create post', () => {
-        const wrapper = shallowMount(Create);
+        const $route = {
+            path: '/posts/new'
+        }
+
+        const wrapper = shallowMount(Form, {
+            mocks: {
+              $route
+            }
+        });
 
         wrapper.find("[data-title]").setValue("test");
         wrapper.find("[data-content]").setValue("test");
@@ -37,7 +55,15 @@ describe('CRUD Post', () => {
     })
 
     it('should edit post', () => {
-        const wrapper = shallowMount(Create);
+        const $route = {
+            path: '/posts/1/edit'
+        }
+
+        const wrapper = shallowMount(Form, {
+            mocks: {
+              $route
+            }
+        });
 
         wrapper.find("[data-title]").setValue("test");
         wrapper.find("[data-content]").setValue("test");
