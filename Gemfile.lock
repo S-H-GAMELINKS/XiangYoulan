@@ -201,6 +201,8 @@ GEM
     selenium-webdriver (3.141.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.2, >= 1.2.2)
+    serviceworker-rails (0.5.5)
+      railties (>= 3.1)
     sextant (0.2.4)
       rails (>= 3.2)
     slim (4.0.1)
@@ -280,6 +282,7 @@ DEPENDENCIES
   rufo
   sass-rails (~> 5.0)
   selenium-webdriver
+  serviceworker-rails
   sextant
   slim-rails
   sqlite3
@@ -293,4 +296,4 @@ RUBY VERSION
    ruby 2.4.4p296
 
 BUNDLED WITH
-   1.16.5
+   1.17.1
