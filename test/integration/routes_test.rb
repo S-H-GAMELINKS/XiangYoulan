@@ -30,4 +30,9 @@ class RoutesTest < ActionDispatch::IntegrationTest
     get "/posts/1/edit"
     assert_response :success
   end
+
+  test "should get /posts/new" do
+    get "/posts/1/new"
+    assert_response :success
+  end
 end
