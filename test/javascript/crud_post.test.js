@@ -35,4 +35,15 @@ describe('CRUD Post', () => {
 
         expect(wrapper.find('.error').exists()).toBe(false);
     })
+
+    it('should edit post', () => {
+        const wrapper = shallowMount(Create);
+
+        wrapper.find("[data-title]").setValue("test");
+        wrapper.find("[data-content]").setValue("test");
+
+        wrapper.find("button").trigger("submit")
+
+        expect(wrapper.find('.error').exists()).toBe(false);
+    })
 });
