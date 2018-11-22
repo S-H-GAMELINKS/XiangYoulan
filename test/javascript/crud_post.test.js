@@ -18,4 +18,9 @@ describe('CRUD Post', () => {
         const wrapper = mount(Create);
         expect(wrapper.isVueInstance()).toBeTruthy()
     });
+
+    it('should render Edit', () => {
+        const wrapper = mount(Edit);
+        expect(wrapper.isVueInstance()).toBeTruthy()
+    });
 });
