@@ -1,3 +1,4 @@
+import { shallowMount } from "@vue/test-utils"
 import Index from 'components/post/Index';
 import Show from 'components/post/Show';
 import Create from 'components/post/Create';
@@ -23,4 +24,15 @@ describe('CRUD Post', () => {
         const wrapper = mount(Edit);
         expect(wrapper.isVueInstance()).toBeTruthy()
     });
+
+    it('should create post', () => {
+        const wrapper = shallowMount(Create);
+
+        wrapper.find("[data-title]").setValue("test");
+        wrapper.find("[data-content]").setValue("test");
+
+        wrapper.find("button").trigger("submit")
+
+        expect(wrapper.find('.error').exists()).toBe(false);
+    })
 });
