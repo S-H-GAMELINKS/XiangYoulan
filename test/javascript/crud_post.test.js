@@ -8,4 +8,9 @@ describe('CRUD Post', () => {
         const wrapper = mount(Index);
         expect(wrapper.isVueInstance()).toBeTruthy()
     });
+
+    it('should render Show', () => {
+        const wrapper = mount(Show);
+        expect(wrapper.isVueInstance()).toBeTruthy()
+    });
 });
