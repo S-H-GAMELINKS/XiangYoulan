@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get "/contact", to: "web#index"
 
   get "/posts", to: "web#index"
-  get "/posts/1", to: "web#index"
+  get "/posts/:id", to: "web#index"
   get "/posts/:id/edit", to: "web#index"
 
   devise_for :users
