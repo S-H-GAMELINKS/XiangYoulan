@@ -35,6 +35,9 @@ gem "slim-rails"
 # Using Foreman
 gem 'foreman'
 
+# Using Service Worker for PWA
+gem "serviceworker-rails"
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
