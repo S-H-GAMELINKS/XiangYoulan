@@ -17,9 +17,9 @@ export default new VueRouter({
         { path: '/', component: Index },
         { path: '/about', component: About },
         { path: '/contact', component: Contact },
-        { path: '/blogs', component: Blogs },
-        { path: '/blogs/create', component: Create },
-        { path: '/blogs/:id', component: Show, name: 'blogs'},
-        { path: '/blogs/edit/:id', component: Edit, name: 'edits'},
+        { path: '/posts', component: Blogs },
+        { path: '/posts/new', component: Create },
+        { path: '/posts/:id', component: Show, name: 'blogs'},
+        { path: '/posts/:id/edit', component: Edit, name: 'edits'},
     ]
 })
