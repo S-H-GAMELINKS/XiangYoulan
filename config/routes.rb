@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get "/posts", to: "web#index"
   get "/posts/:id", to: "web#index"
   get "/posts/:id/edit", to: "web#index"
+  get "/posts/new", to: "web#index"
 
   devise_for :users
   namespace :api, format: 'json' do
