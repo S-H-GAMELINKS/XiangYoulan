@@ -24,7 +24,10 @@ export default {
     },
     methods: {
         searchPosts: function() {
-            axios.get('/api/posts/search', {content_cont: this.keyword}).then((response) => {
+            axios.defaults.headers['X-CSRF-TOKEN'] = $('meta[name=csrf-token]').attr('content');
+            axios.defaults.headers['content-type'] = 'application/json';
+
+            axios.post('/api/posts/search', {q: {content_cont: this.keyword}}).then((response) => {
                 for(var i = 0; i < response.data.length; i++) {
                     this.posts.push(response.data[i]);
                 }

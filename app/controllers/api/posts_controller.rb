@@ -7,6 +7,13 @@ class Api::PostsController < ApplicationController
       @posts = Post.all
       render json: @posts
     end
+
+    # POST /api/posts/search
+    def search
+      @q = Post.ransack(params[:q])
+      @posts = @q.result
+      render json: @posts
+    end
   
     # GET /api/posts/1
     # GET /api/posts/1.json
