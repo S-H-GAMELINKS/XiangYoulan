@@ -16,4 +16,4 @@ describe('Search Post', () => {
 
         expect(wrapper).not.toBeNull();
     });
-})
+});
