@@ -2,7 +2,7 @@
     <div>
         <div class="container">
             <p v-for="(post, key, index) in posts" :key=index>
-                {{post.title}}
+                <router-link :to="{name: 'posts', params: {id: post.id}}">{{post.title}}</router-link>
             </p>
         </div>
     </div>
