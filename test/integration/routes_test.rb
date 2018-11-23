@@ -37,7 +37,7 @@ class RoutesTest < ActionDispatch::IntegrationTest
   end
 
   test "should get /search" do
-    get "/search"
+    get "/search/:id"
     assert_response :success
   end
 end
