@@ -8,6 +8,7 @@ import Blogs from '../components/post/Index.vue';
 import Create from '../components/post/Create.vue';
 import Show from '../components/post/Show.vue';
 import Edit from '../components/post/Edit.vue';
+import Search from '../components/post/Search.vue';
 
 Vue.use(VueRouter)
 
@@ -17,6 +18,7 @@ export default new VueRouter({
         { path: '/', component: Index },
         { path: '/about', component: About },
         { path: '/contact', component: Contact },
+        { path: '/search/:id', component: Search, name: 'search'},
         { path: '/posts', component: Blogs },
         { path: '/posts/new', component: Create },
         { path: '/posts/:id', component: Show, name: 'posts'},
