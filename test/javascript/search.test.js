@@ -1,5 +1,5 @@
 import { shallowMount } from "@vue/test-utils";
-import Search from 'components/post/search';
+import Search from 'components/post/Search';
 
 describe('Search Post', () => {
     it('should render Search', () => {
