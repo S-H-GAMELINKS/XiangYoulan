@@ -23,7 +23,7 @@ export default {
         this.searchPosts()
     },
     methods: {
-        getPosts: function() {
+        searchPosts: function() {
             axios.get('/api/posts/search', {content_cont: this.keyword}).then((response) => {
                 for(var i = 0; i < response.data.length; i++) {
                     this.posts.push(response.data[i]);
