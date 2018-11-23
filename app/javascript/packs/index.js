@@ -8,9 +8,4 @@ const app = new Vue({
     components: {
         'nav-bar': Header
     },
-    data: function () {
-        return {
-            mes: "Hello Ruby on Rails with Vue.js"
-        }
-    }
 })
