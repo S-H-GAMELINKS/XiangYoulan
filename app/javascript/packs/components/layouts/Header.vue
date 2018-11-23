@@ -13,6 +13,20 @@
       <router-link to="/posts" class="dropdown-item">Posts</router-link>
     </div>
   </div>
+  <form class="form-inline my-2 my-lg-0">
+    <input class="form-control mr-sm-2" type="search" v-model="keyword" placeholder="Search" aria-label="Search">
+    <router-link :to="{name: 'search', params: {id: keyword}}" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</router-link>
+  </form>
 </nav>
 </div>    
 </template>
+
+<script>
+export default {
+  data: function() {
+    return {
+      keyword: ""
+    }
+  }
+}
+</script>
