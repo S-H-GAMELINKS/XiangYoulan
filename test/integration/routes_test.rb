@@ -15,4 +15,24 @@ class RoutesTest < ActionDispatch::IntegrationTest
     get "/contact"
     assert_response :success
   end
+
+  test "should get /posts" do
+    get "/posts"
+    assert_response :success
+  end
+
+  test "should get /posts/1" do
+    get "/posts/1"
+    assert_response :success
+  end
+
+  test "should get /posts/1/edit" do
+    get "/posts/1/edit"
+    assert_response :success
+  end
+
+  test "should get /posts/new" do
+    get "/posts/new"
+    assert_response :success
+  end
 end
