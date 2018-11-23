@@ -35,4 +35,9 @@ class ApiControllerTest < ActionDispatch::IntegrationTest
         delete "/api/posts/1"
         assert_response :success
     end
+
+    test "should post search" do
+        post "/api/posts/search", params: {q: {content_cont: "test"}}
+        assert_response :success
+    end
 end

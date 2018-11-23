@@ -38,6 +38,9 @@ gem 'foreman'
 # Using Service Worker for PWA
 gem "serviceworker-rails"
 
+# Using Ransack for Searching
+gem 'ransack'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

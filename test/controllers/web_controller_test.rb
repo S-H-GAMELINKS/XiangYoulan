@@ -11,11 +11,6 @@ class WebControllerTest < ActionDispatch::IntegrationTest
     assert_equal 200, response.status
   end
 
-  test "should include index content {{mes}}" do
-    get root_url
-    assert_equal true, response.body.include?("{{mes}}")
-  end
-
   test "should include index content <nav-bar></nav-bar>" do
     get root_url
     assert_equal true, response.body.include?("<nav-bar></nav-bar>")

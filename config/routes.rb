@@ -7,10 +7,12 @@ Rails.application.routes.draw do
   get "/posts/:id", to: "web#index"
   get "/posts/:id/edit", to: "web#index"
   get "/posts/new", to: "web#index"
+  get "/search/:id", to: "web#index"
 
   devise_for :users
   namespace :api, format: 'json' do
     resources :posts
+    post '/posts/search' => 'posts#search'
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
