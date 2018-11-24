@@ -1,6 +1,6 @@
 <template>
     <div>
-        <social-sharing url="https://vuejs.org/"
+        <social-sharing :url="url"
                       :title="title"
                       description="Sharing Xiang Youlan"
                       quote="Sharing Xiang Youlan"
@@ -28,7 +28,8 @@ export default {
     data: function() {
         return {
             title: "",
-            content: ""
+            content: "",
+            url: location.href
         }
     },
     mounted: function() {
