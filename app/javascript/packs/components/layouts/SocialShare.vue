@@ -7,13 +7,13 @@
                       inline-template>
             <div>
                 <network network="facebook">
-                    <i class="fa fa-facebook"></i> Facebook 
+                    <button class="fa fa-facebook">Facebook</button> 
                 </network>
                 <network network="line">
-                    <i class="fa fa-line"></i> Line
+                    <button class="fa fa-line">Line</button>
                 </network>
                 <network network="twitter">
-                    <i class="fa fa-twitter"></i> Twitter
+                    <button class="fa fa-twitter">Twitter</button>
                 </network>
             </div>
         </social-sharing>
