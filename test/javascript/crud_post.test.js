@@ -47,7 +47,7 @@ describe('CRUD Post', () => {
         });
 
         wrapper.find("input").setValue("test");
-        wrapper.find("textarea").setValue("test");
+        wrapper.find("input").setValue("test");
 
         wrapper.find("button").trigger('click')
 
@@ -66,7 +66,7 @@ describe('CRUD Post', () => {
         });
 
         wrapper.find("input").setValue("test");
-        wrapper.find("textarea").setValue("test");
+        wrapper.find("input").setValue("test");
 
         wrapper.find("button").trigger('click')
 
