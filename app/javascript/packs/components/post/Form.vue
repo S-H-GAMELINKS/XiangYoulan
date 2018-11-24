@@ -7,7 +7,7 @@
             </div>
             <div class="form-group">
                 <label>Content</label>
-                <textarea class="form-control" rows="20"  v-model="content" placeholder="Input your post content ......"></textarea>
+                <vue-editor v-model="content"></vue-editor>
             </div>
         </form>
         <p>
@@ -21,6 +21,7 @@
 
 import axios from 'axios';
 import $ from 'jquery'
+import { VueEditor } from 'vue2-editor';
 
 export default {
     data: function() {
@@ -30,6 +31,9 @@ export default {
             creatable: false,
             editable: false
         }
+    },
+    components: {
+        VueEditor
     },
     mounted: function() {
         this.checkAddress();
@@ -51,7 +55,7 @@ export default {
 
             axios.get('/api/posts/' + id).then((response) => {
                 this.title = response.data.title;
-                this.content = response.data.title;
+                this.content = response.data.content;
             }, (error) => {
                 alert(error);
             })

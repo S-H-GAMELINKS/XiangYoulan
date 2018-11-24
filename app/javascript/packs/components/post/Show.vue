@@ -3,7 +3,7 @@
         <p><h1>Title: {{title}} </h1></p>
 
         <p><h2>Content</h2></p>
-        <p>{{content}}</p>
+        <p v-html="content"></p>
     </div>
 </template>
 
