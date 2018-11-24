@@ -55,7 +55,7 @@ export default {
 
             axios.get('/api/posts/' + id).then((response) => {
                 this.title = response.data.title;
-                this.content = response.data.title;
+                this.content = response.data.content;
             }, (error) => {
                 alert(error);
             })
