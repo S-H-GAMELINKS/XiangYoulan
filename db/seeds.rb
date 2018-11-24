@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+100.times do |n|
+    title = Faker::Lovecraft.location
+    content = Faker::Lovecraft.sentence
+    Post.create!(title: title, content: content)
+end
