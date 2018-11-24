@@ -76,6 +76,8 @@ group :development do
   gem 'license_finder'
   # Using Rufo
   gem 'rufo'
+  # Using Faker
+  gem 'faker'
 end
 
 group :test do
