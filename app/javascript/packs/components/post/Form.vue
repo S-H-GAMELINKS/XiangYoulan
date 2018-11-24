@@ -7,7 +7,10 @@
             </div>
             <div class="form-group">
                 <label>Content</label>
-                <vue-editor v-model="content"></vue-editor>
+                <vue-editor v-model="content"
+                            :customModules="customModulesForEditor"
+                            :editorOptions="editorSettings">
+                </vue-editor>
             </div>
         </form>
         <p>
@@ -22,12 +25,21 @@
 import axios from 'axios';
 import $ from 'jquery'
 import { VueEditor } from 'vue2-editor';
+import { ImageDrop } from 'quill-image-drop-module';
 
 export default {
     data: function() {
         return {
             title: "",
             content: "",
+            customModulesForEditor: [
+                { alias: 'imageDrop', module: ImageDrop },
+            ],
+            editorSettings: {
+                modules: {
+                    imageDrop: true,
+                }
+            },
             creatable: false,
             editable: false
         }
