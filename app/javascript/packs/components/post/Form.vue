@@ -7,9 +7,7 @@
             </div>
             <div class="form-group">
                 <label>Content</label>
-                <vue-editor v-model="content"
-                            :customModules="customModulesForEditor"
-                            :editorOptions="editorSettings">
+                <vue-editor v-model="content" :editorOptions="editorSettings">
                 </vue-editor>
             </div>
         </form>
@@ -24,20 +22,22 @@
 
 import axios from 'axios';
 import $ from 'jquery'
-import { VueEditor } from 'vue2-editor';
-import { ImageDrop } from 'quill-image-drop-module';
+import { VueEditor, Quill } from 'vue2-editor';
+import { ImageDrop } from "quill-image-drop-module";
+import { ImageResize } from "quill-image-resize-module";
+
+Quill.register("modules/imageDrop", ImageDrop);
+Quill.register("modules/imageResize", ImageResize);
 
 export default {
     data: function() {
         return {
             title: "",
             content: "",
-            customModulesForEditor: [
-                { alias: 'imageDrop', module: ImageDrop },
-            ],
             editorSettings: {
                 modules: {
                     imageDrop: true,
+                    imageResize: {}
                 }
             },
             creatable: false,
