@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <p><h1>Title: {{title}} </h1></p>
-
+        <social-share></social-share>
         <p><h2>Content</h2></p>
         <p v-html="content"></p>
     </div>
@@ -10,6 +10,7 @@
 <script>
 
 import axios from 'axios';
+import SocialShare from '../layouts/SocialShare.vue';
 
 export default {
     data: function() {
@@ -17,6 +18,9 @@ export default {
             title: "",
             content: ""
         }
+    },
+    components: {
+        SocialShare
     },
     mounted: function() {
         this.getPost();
