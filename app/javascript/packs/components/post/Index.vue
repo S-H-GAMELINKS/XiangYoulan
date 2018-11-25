@@ -17,13 +17,30 @@ import axios from 'axios';
 export default {
     data: function() {
         return {
-            posts: []
+            posts: [],
+            pageCount: 1,
+            pagePer: 20
         }
     },
     mounted: function() {
-        this.getPosts()
+        this.getPageCounts();
+        this.getPosts();
     },
     methods: {
+        getPageCounts: function() {
+            axios.get('/api/posts').then((response) => {
+
+                let counter = 0;
+
+                for(var i = 0; i < response.data.length; i++) {
+                    counter++;
+                }
+
+                this.pageCount = parseInt(counter / this.pagePer);
+            }, (error) => {
+                console.log(error);
+            })
+        },
         getPosts: function() {
             axios.get('/api/posts').then((response) => {
                 for(var i = 0; i < response.data.length; i++) {
