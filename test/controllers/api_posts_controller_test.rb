@@ -36,6 +36,11 @@ class ApiControllerTest < ActionDispatch::IntegrationTest
         assert_response :success
     end
 
+    test "should null post can't update" do
+        post "/api/posts", params: {post: {title: "", content: ""}}
+        assert_response :error
+    end
+
     test "should post delete" do
         delete "/api/posts/1"
         assert_response :success
