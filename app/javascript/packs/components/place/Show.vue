@@ -29,7 +29,7 @@ export default {
         getPlace: function() {
             const id = String(this.$route.path).replace(/\/places\//, '');
             axios.get('/api/places/' + id).then((response) => {
-                this.title = response.data.name;
+                this.name = response.data.name;
                 this.content = response.data.content;
             }, (error) => {
                 alert(error);
