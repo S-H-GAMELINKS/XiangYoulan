@@ -53,4 +53,23 @@ describe('CRUD Place', () => {
 
         expect(wrapper.find('.error').exists()).toBe(false);
     })
+
+    it('should edit place', () => {
+        const $route = {
+            path: '/places/1/edit'
+        }
+
+        const wrapper = shallowMount(Form, {
+            mocks: {
+              $route
+            }
+        });
+
+        wrapper.find("input").setValue("test");
+        wrapper.find("input").setValue("test");
+
+        wrapper.find("button").trigger('click')
+
+        expect(wrapper.find('.error').exists()).toBe(false);
+    })
 });
