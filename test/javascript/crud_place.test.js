@@ -18,4 +18,9 @@ describe('CRUD Place', () => {
         const wrapper = shallowMount(Create);
         expect(wrapper).not.toBeNull();
     });
+
+    it('should render Edit', () => {
+        const wrapper = shallowMount(Edit);
+        expect(wrapper).not.toBeNull();
+    });
 });
