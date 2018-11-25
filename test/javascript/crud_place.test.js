@@ -1,8 +1,8 @@
 import { shallowMount } from "@vue/test-utils";
-import Index from 'conponents/place/Index';
-import Show from 'conponents/place/Show';
-import Create from 'conponents/place/Create';
-import Edit from 'conponents/place/Edit';
+import Index from 'components/place/Index';
+import Show from 'components/place/Show';
+import Create from 'components/place/Create';
+import Edit from 'components/place/Edit';
 import Form from 'components/place/Form';
 
 describe('CRUD Place', () => {
