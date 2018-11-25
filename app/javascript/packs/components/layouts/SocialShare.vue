@@ -29,17 +29,41 @@ export default {
         return {
             title: "",
             content: "",
-            url: location.href
+            url: location.href,
+            placable: false,
+            postable: false
         }
     },
     mounted: function() {
-        this.getPost();
+        this.checkAddress();
+        if (this.postable) {
+            this.getPost();
+        } else {
+            this.getPlace();
+        }
     },
     methods: {
+        checkAddress: function() {
+            const url = String(this.$route.path);
+            if(url.match(/places/)) {
+                this.placable = true;
+            } else {
+                this.postable = true;
+            }
+        },
         getPost: function() {
             const id = String(this.$route.path).replace(/\/posts\//, '');
             axios.get('/api/posts/' + id).then((response) => {
                 this.title = response.data.title;
+                this.content = response.data.content;
+            }, (error) => {
+                alert(error);
+            })
+        },
+        getPlace: function() {
+            const id = String(this.$route.path).replace(/\/places\//, '');
+            axios.get('/api/places/' + id).then((response) => {
+                this.title = response.data.name;
                 this.content = response.data.content;
             }, (error) => {
                 alert(error);
