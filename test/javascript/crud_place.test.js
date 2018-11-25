@@ -2,6 +2,7 @@ import { shallowMount } from "@vue/test-utils";
 import Index from 'conponents/place/Index';
 import Show from 'conponents/place/Show';
 import Create from 'conponents/place/Create';
+import Form from 'components/place/Form';
 
 describe('CRUD Place', () => {
     it('should render Index', () => {
@@ -32,4 +33,23 @@ describe('CRUD Place', () => {
         const wrapper = shallowMount(Edit);
         expect(wrapper).not.toBeNull();
     });
+
+    it('should create place', () => {
+        const $route = {
+            path: '/places/new'
+        }
+
+        const wrapper = shallowMount(Form, {
+            mocks: {
+              $route
+            }
+        });
+
+        wrapper.find("input").setValue("test");
+        wrapper.find("input").setValue("test");
+
+        wrapper.find("button").trigger('click')
+
+        expect(wrapper.find('.error').exists()).toBe(false);
+    })
 });
