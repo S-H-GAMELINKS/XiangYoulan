@@ -44,6 +44,9 @@ gem 'ransack'
 # Using Kaminari
 gem 'kaminari'
 
+# Using Hashtag's
+gem 'acts-as-taggable-on'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
