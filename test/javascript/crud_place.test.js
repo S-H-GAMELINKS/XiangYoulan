@@ -2,7 +2,7 @@ import { shallowMount } from "@vue/test-utils";
 import Index from 'conponents/place/Index';
 import Show from 'conponents/place/Show';
 
-describe('CRUD Post', () => {
+describe('CRUD Place', () => {
     it('should render Index', () => {
         const wrapper = shallowMount(Index);
         expect(wrapper).not.toBeNull();
