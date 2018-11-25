@@ -4,11 +4,17 @@ import VueRouter from 'vue-router';
 import Index from '../components/web/Index.vue';
 import About from '../components/web/About.vue';
 import Contact from '../components/web/Contact.vue';
-import Blogs from '../components/post/Index.vue';
-import Create from '../components/post/Create.vue';
-import Show from '../components/post/Show.vue';
-import Edit from '../components/post/Edit.vue';
-import Search from '../components/post/Search.vue';
+
+import PostsIndex from '../components/post/Index.vue';
+import PostsCreate from '../components/post/Create.vue';
+import PostsShow from '../components/post/Show.vue';
+import PostsEdit from '../components/post/Edit.vue';
+import PostsSearch from '../components/post/Search.vue';
+
+import PlacesIndex from '../components/place/Index.vue';
+import PlacesCreate from '../components/place/Create.vue';
+import PlacesShow from '../components/place/Show.vue';
+import PlacesEdit from '../components/place/Edit.vue';
 
 Vue.use(VueRouter)
 
@@ -18,10 +24,14 @@ export default new VueRouter({
         { path: '/', component: Index },
         { path: '/about', component: About },
         { path: '/contact', component: Contact },
-        { path: '/search/:id', component: Search, name: 'search'},
-        { path: '/posts', component: Blogs },
-        { path: '/posts/new', component: Create },
-        { path: '/posts/:id', component: Show, name: 'posts'},
-        { path: '/posts/:id/edit', component: Edit, name: 'edits'},
+        { path: '/search/:id', component: PostsSearch, name: 'search'},
+        { path: '/posts', component: PostsIndex },
+        { path: '/posts/new', component: PostsCreate },
+        { path: '/posts/:id', component: PostsShow, name: 'posts_show'},
+        { path: '/posts/:id/edit', component: Edit, name: 'posts_edits'},
+        { path: '/places', component: PlacesIndex },
+        { path: '/places/new', component: PlacesCreate },
+        { path: '/places/:id', component: PlacesShow, name: 'palces_show'},
+        { path: '/places/:id/edit', component: PlacesEdit, name: 'places_edits'},
     ]
 })
