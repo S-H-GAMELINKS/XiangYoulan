@@ -20,4 +20,9 @@ class ApiPlacesControllerTest < ActionDispatch::IntegrationTest
         get "/api/places/1/edit"
         assert_response :success
     end
+
+    test "should place create" do
+        post "/api/places", params: {post: {title: "test", content: "test"}}
+        assert_response :success
+    end
 end
