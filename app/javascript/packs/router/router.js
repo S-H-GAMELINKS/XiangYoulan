@@ -31,7 +31,7 @@ export default new VueRouter({
         { path: '/posts/:id/edit', component: PostsEdit, name: 'posts_edits'},
         { path: '/places', component: PlacesIndex },
         { path: '/places/new', component: PlacesCreate },
-        { path: '/places/:id', component: PlacesShow, name: 'palces_show'},
+        { path: '/places/:id', component: PlacesShow, name: 'places_show'},
         { path: '/places/:id/edit', component: PlacesEdit, name: 'places_edits'},
     ]
 })
