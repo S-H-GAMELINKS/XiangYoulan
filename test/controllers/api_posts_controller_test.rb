@@ -37,7 +37,7 @@ class ApiControllerTest < ActionDispatch::IntegrationTest
     end
 
     test "should null post can't update" do
-        post "/api/posts", params: {post: {title: "", content: ""}}
+        put "/api/posts/1", params: {post: {title: "", content: ""}}
         assert_equal true, response.body.include?("can't be blank")
     end
 
