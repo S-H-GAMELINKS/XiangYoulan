@@ -28,7 +28,7 @@ class ApiControllerTest < ActionDispatch::IntegrationTest
 
     test "should null post can't create" do
         post "/api/posts", params: {post: {title: "", content: ""}}
-        assert_response :error
+        assert_equal true, response.body.include?("can't be blank")
     end
 
     test "should post update" do
@@ -38,7 +38,7 @@ class ApiControllerTest < ActionDispatch::IntegrationTest
 
     test "should null post can't update" do
         post "/api/posts", params: {post: {title: "", content: ""}}
-        assert_response :error
+        assert_equal true, response.body.include?("can't be blank")
     end
 
     test "should post delete" do
