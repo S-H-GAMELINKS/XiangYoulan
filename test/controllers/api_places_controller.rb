@@ -40,4 +40,9 @@ class ApiPlacesControllerTest < ActionDispatch::IntegrationTest
         put "/api/places/1", params: {post: {title: "", content: ""}}
         assert_equal true, response.body.include?("can't be blank")
     end
+
+    test "should place delete" do
+        delete "/api/places/1"
+        assert_response :success
+    end
 end
