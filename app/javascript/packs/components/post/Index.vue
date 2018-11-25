@@ -6,6 +6,15 @@
                 <router-link :to="{name: 'edits', params: {id: post.id}}" >Edit</router-link>
             </p>
             <router-link to="/posts/new" >New</router-link>
+            <paginate
+                v-model="pages"
+                :page-count="pageCount"
+                :click-handler="getPosts"
+                :prev-text="'Prev'"
+                :next-text="'Next'"
+                :container-class="'pagination'"
+                :page-class="'page-item'">
+            </paginate>
         </div>
     </div>
 </template>
@@ -13,22 +22,48 @@
 <script>
 
 import axios from 'axios';
+import $ from 'jquery';
 
 export default {
     data: function() {
         return {
-            posts: []
+            posts: [],
+            pages: 1,
+            pageCount: 0,
+            pagePer: 20
         }
     },
     mounted: function() {
-        this.getPosts()
+        this.getPageCounts();
+        this.getPosts();
     },
     methods: {
-        getPosts: function() {
+        getPageCounts: function() {
             axios.get('/api/posts').then((response) => {
+
+                let counter = 0;
+
+                for(var i = 0; i < response.data.length; i++) {
+                    counter++;
+                }
+
+                this.pageCount = Math.ceil(counter / this.pagePer);
+            }, (error) => {
+                console.log(error);
+            })
+        },
+        getPosts: function() {
+            axios.defaults.headers['X-CSRF-TOKEN'] = $('meta[name=csrf-token]').attr('content');
+            axios.defaults.headers['content-type'] = 'application/json';
+
+            this.posts.length = 0;
+
+            axios.post('/api/posts/pagenation', {page: this.pages}).then((response) => {
                 for(var i = 0; i < response.data.length; i++) {
                     this.posts.push(response.data[i]);
                 }
+
+                this.$forceUpdate();
             }, (error) => {
                 console.log(error);
             })

@@ -1,5 +1,8 @@
 class Api::PostsController < ApplicationController
     before_action :set_post, only: [:show, :edit, :update, :destroy]
+
+    # Pagenation Content Num
+    PER = 20
   
     # GET /api/posts
     # GET /api/posts.json
@@ -14,6 +17,13 @@ class Api::PostsController < ApplicationController
       @posts = @q.result
       render json: @posts
     end
+
+    # POST /api/posts/pagenation
+    def pagenation
+      @posts = Post.page(params[:page]).per(PER)
+      render json: @posts
+    end
+    # POST /api/posts/search
   
     # GET /api/posts/1
     # GET /api/posts/1.json
