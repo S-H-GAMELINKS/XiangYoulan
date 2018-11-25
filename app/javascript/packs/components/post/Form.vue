@@ -77,8 +77,13 @@ export default {
             axios.defaults.headers['content-type'] = 'application/json';
 
             axios.post('/api/posts', {post: {title: this.title, content: this.content}}).then((response) => {
-                alert("Success!");
-                this.$router.push({path: '/posts'});
+
+                if (this.title === "" || this.content === "") {
+                    alert("Can't be black in Title or Content!!");
+                } else {
+                    alert("Success!");
+                    this.$router.push({path: '/posts'});
+                }
             }, (error) => {
                 alert(error);
             })
@@ -90,8 +95,13 @@ export default {
             const id = String(this.$route.path).replace(/\/posts\//, '').replace(/\/edit/, '');
 
             axios.put('/api/posts/' + id, {post: {title: this.title, content: this.content}}).then((response) => {
-                alert("Success!");
-                this.$router.push({path: '/posts'});
+
+                if (this.title === "" || this.content === "") {
+                    alert("Can't be black in Title or Content!!");
+                } else {
+                    alert("Success!");
+                    this.$router.push({path: '/posts'});
+                }
             }, (error) => {
                 alert(error);
             })
