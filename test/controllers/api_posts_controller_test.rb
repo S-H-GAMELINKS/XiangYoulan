@@ -26,9 +26,19 @@ class ApiControllerTest < ActionDispatch::IntegrationTest
         assert_response :success
     end
 
+    test "should null post can't create" do
+        post "/api/posts", params: {post: {title: "", content: ""}}
+        assert_equal true, response.body.include?("can't be blank")
+    end
+
     test "should post update" do
         put "/api/posts/1", params: {post: {title: "test", content: "test"}}
         assert_response :success
+    end
+
+    test "should null post can't update" do
+        post "/api/posts", params: {post: {title: "", content: ""}}
+        assert_equal true, response.body.include?("can't be blank")
     end
 
     test "should post delete" do
