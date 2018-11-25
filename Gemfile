@@ -41,6 +41,9 @@ gem "serviceworker-rails"
 # Using Ransack for Searching
 gem 'ransack'
 
+# Using Kaminari
+gem 'kaminari'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
