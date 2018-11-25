@@ -50,4 +50,9 @@ class ApiPlacesControllerTest < ActionDispatch::IntegrationTest
         post "/api/places/search", params: {q: {content_cont: "test"}}
         assert_response :success
     end
+
+    test "should place pagenation" do
+        post "/api/places/pagenation", params: {page: 1}
+        assert_response :success
+    end
 end
