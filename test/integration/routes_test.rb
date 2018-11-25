@@ -40,4 +40,9 @@ class RoutesTest < ActionDispatch::IntegrationTest
     get "/search/:id"
     assert_response :success
   end
+
+  test "should get /places" do
+    get "/places"
+    assert_response :success
+  end
 end
