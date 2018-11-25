@@ -22,22 +22,22 @@ class ApiPlacesControllerTest < ActionDispatch::IntegrationTest
     end
 
     test "should place create" do
-        post "/api/places", params: {post: {title: "test", content: "test"}}
+        post "/api/places", params: {post: {name: "test", content: "test"}}
         assert_response :success
     end
 
     test "should null place can't create" do
-        post "/api/places", params: {post: {title: "", content: ""}}
+        post "/api/places", params: {post: {name: "", content: ""}}
         assert_equal true, response.body.include?("can't be blank")
     end
 
     test "should place update" do
-        put "/api/places/1", params: {post: {title: "test", content: "test"}}
+        put "/api/places/1", params: {post: {name: "test", content: "test"}}
         assert_response :success
     end
 
     test "should null place can't update" do
-        put "/api/places/1", params: {post: {title: "", content: ""}}
+        put "/api/places/1", params: {post: {name: "", content: ""}}
         assert_equal true, response.body.include?("can't be blank")
     end
 
