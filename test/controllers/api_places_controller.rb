@@ -15,4 +15,9 @@ class ApiPlacesControllerTest < ActionDispatch::IntegrationTest
         get "/api/places/new"
         assert_response :success
     end
+
+    test "should get edit" do
+        get "/api/places/1/edit"
+        assert_response :success
+    end
 end
