@@ -25,4 +25,9 @@ class ApiPlacesControllerTest < ActionDispatch::IntegrationTest
         post "/api/places", params: {post: {title: "test", content: "test"}}
         assert_response :success
     end
+
+    test "should null place can't create" do
+        post "/api/places", params: {post: {title: "", content: ""}}
+        assert_equal true, response.body.include?("can't be blank")
+    end
 end
