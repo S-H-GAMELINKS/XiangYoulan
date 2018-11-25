@@ -56,7 +56,7 @@ export default {
             axios.defaults.headers['X-CSRF-TOKEN'] = $('meta[name=csrf-token]').attr('content');
             axios.defaults.headers['content-type'] = 'application/json';
 
-            this.posts.length = 0;
+            this.places.length = 0;
 
             axios.post('/api/places/pagenation', {page: this.pages}).then((response) => {
                 for(var i = 0; i < response.data.length; i++) {
