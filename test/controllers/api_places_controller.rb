@@ -10,4 +10,9 @@ class ApiPlacesControllerTest < ActionDispatch::IntegrationTest
         get "/api/places/1"
         assert_response :success
     end
+
+    test "should get new" do
+        get "/api/places/new"
+        assert_response :success
+    end
 end
