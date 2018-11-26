@@ -27,7 +27,7 @@ class ApiControllerTest < ActionDispatch::IntegrationTest
     end
 
     test "should post create using hashtag" do
-        post "/api/posts", params: {post: {title: "test", content: "test", tags: {"#tags #example"}}}
+        post "/api/posts", params: {post: {title: "test", content: "test", tags: "#tags #example"}}
         assert_response :success
     end
 
@@ -42,7 +42,7 @@ class ApiControllerTest < ActionDispatch::IntegrationTest
     end
 
     test "should post update using hashtag" do
-        put "/api/posts", params: {post: {title: "test", content: "test", tags: {"#tags #example"}}}
+        put "/api/posts", params: {post: {title: "test", content: "test", tags: "#tags #example"}}
         assert_response :success
     end
 
