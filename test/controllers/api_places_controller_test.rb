@@ -41,6 +41,11 @@ class ApiPlacesControllerTest < ActionDispatch::IntegrationTest
         assert_response :success
     end
 
+    test "should place update using hastag" do
+        put "/api/places", params: {place: {name: "test", content: "test", tags: "#tags #example"}}
+        assert_response :success
+    end
+
     test "should null place can't update" do
         put "/api/places/1", params: {place: {name: "", content: ""}}
         assert_equal true, response.body.include?("can't be blank")
