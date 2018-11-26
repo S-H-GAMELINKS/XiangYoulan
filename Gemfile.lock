@@ -95,6 +95,8 @@ GEM
       responders
       warden (~> 1.2.3)
     dotenv (0.7.0)
+    dotenv-rails (0.7.0)
+      dotenv (= 0.7.0)
     duktape (2.0.1.0)
     erubi (1.7.1)
     execjs (2.7.0)
@@ -297,6 +299,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   coffee-rails (~> 4.2)
   devise
+  dotenv-rails
   duktape
   faker
   foreman

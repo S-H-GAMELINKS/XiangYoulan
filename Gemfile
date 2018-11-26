@@ -50,6 +50,9 @@ gem 'geocoder'
 # Using gon
 gem 'gon'
 
+# Using Dotenv
+gem 'dotenv-rails'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
