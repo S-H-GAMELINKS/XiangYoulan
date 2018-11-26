@@ -46,6 +46,8 @@ class Api::PostsController < ApplicationController
     # POST /api/posts.json
     def create
       @post = Post.new(post_params)
+
+      add_tags
       
       if @post.save
         render json: @post
@@ -58,6 +60,7 @@ class Api::PostsController < ApplicationController
     # PATCH/PUT /api/posts/1.json
     def update
       if @post.update(post_params)
+        add_tags
         render json: @post
       else
         render json: @post.errors
@@ -79,5 +82,15 @@ class Api::PostsController < ApplicationController
       # Never trust parameters from the scary internet, only allow the white list through.
       def post_params
         params.require(:post).permit(:title, :content)
+      end
+
+      def tags_params
+        params.require(:post).permit(:tags)
+      end
+
+      def add_tags
+        tags_params.split(" ").each do |tag|
+          @post.tag_list.add(tag)
+        end
       end
   end
