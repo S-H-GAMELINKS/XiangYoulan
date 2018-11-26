@@ -59,8 +59,10 @@ class Api::PostsController < ApplicationController
     # PATCH/PUT /api/posts/1
     # PATCH/PUT /api/posts/1.json
     def update
+
+      add_tags
+
       if @post.update(post_params)
-        add_tags
         render json: @post
       else
         render json: @post.errors
