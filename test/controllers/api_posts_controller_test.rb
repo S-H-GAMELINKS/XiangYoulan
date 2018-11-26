@@ -22,7 +22,7 @@ class ApiControllerTest < ActionDispatch::IntegrationTest
     end
 
     test "should post create" do
-        post "/api/posts", params: {post: {title: "test", content: "test"}}
+        post "/api/posts", params: {post: {title: "test", content: "test", tags: ""}}
         assert_response :success
     end
 
@@ -32,12 +32,12 @@ class ApiControllerTest < ActionDispatch::IntegrationTest
     end
 
     test "should null post can't create" do
-        post "/api/posts", params: {post: {title: "", content: ""}}
+        post "/api/posts", params: {post: {title: "", content: "", tags: ""}}
         assert_equal true, response.body.include?("can't be blank")
     end
 
     test "should post update" do
-        put "/api/posts/1", params: {post: {title: "test", content: "test"}}
+        put "/api/posts/1", params: {post: {title: "test", content: "test", tags: ""}}
         assert_response :success
     end
 
@@ -47,7 +47,7 @@ class ApiControllerTest < ActionDispatch::IntegrationTest
     end
 
     test "should null post can't update" do
-        put "/api/posts/1", params: {post: {title: "", content: ""}}
+        put "/api/posts/1", params: {post: {title: "", content: "", tags: ""}}
         assert_equal true, response.body.include?("can't be blank")
     end
 

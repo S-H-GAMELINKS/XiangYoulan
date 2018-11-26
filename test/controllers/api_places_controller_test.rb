@@ -22,7 +22,7 @@ class ApiPlacesControllerTest < ActionDispatch::IntegrationTest
     end
 
     test "should place create" do
-        post "/api/places", params: {place: {name: "test", content: "test"}}
+        post "/api/places", params: {place: {name: "test", content: "test", tags: ""}}
         assert_response :success
     end
 
@@ -32,12 +32,12 @@ class ApiPlacesControllerTest < ActionDispatch::IntegrationTest
     end
 
     test "should null place can't create" do
-        post "/api/places", params: {place: {name: "", content: ""}}
+        post "/api/places", params: {place: {name: "", content: "", tags: ""}}
         assert_equal true, response.body.include?("can't be blank")
     end
 
     test "should place update" do
-        put "/api/places/1", params: {place: {name: "test", content: "test"}}
+        put "/api/places/1", params: {place: {name: "test", content: "test", tags: ""}}
         assert_response :success
     end
 
@@ -47,7 +47,7 @@ class ApiPlacesControllerTest < ActionDispatch::IntegrationTest
     end
 
     test "should null place can't update" do
-        put "/api/places/1", params: {place: {name: "", content: ""}}
+        put "/api/places/1", params: {place: {name: "", content: "", tags: ""}}
         assert_equal true, response.body.include?("can't be blank")
     end
 
