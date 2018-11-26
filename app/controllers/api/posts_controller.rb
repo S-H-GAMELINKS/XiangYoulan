@@ -60,6 +60,8 @@ class Api::PostsController < ApplicationController
     # PATCH/PUT /api/posts/1.json
     def update
 
+      @post.tags.destroy_all
+
       add_tags
 
       if @post.update(post_params)
@@ -87,11 +89,12 @@ class Api::PostsController < ApplicationController
       end
 
       def tags_params
-        params.require(:post).permit(:tags).to_s
+        params.require(:post).permit(:tags)
       end
 
       def add_tags
-        tags_params.split(" ").each do |tag|
+        tags = tags_params[:tags]
+        tags.split(" ").each do |tag|
           @post.tag_list.add(tag)
         end
       end
