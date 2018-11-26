@@ -42,7 +42,7 @@ class ApiControllerTest < ActionDispatch::IntegrationTest
     end
 
     test "should post update using hashtag" do
-        put "/api/posts", params: {post: {title: "test", content: "test", tags: "#tags #example"}}
+        put "/api/posts/1", params: {post: {title: "test", content: "test", tags: "#tags #example"}}
         assert_response :success
     end
 

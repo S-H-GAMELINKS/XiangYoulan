@@ -42,7 +42,7 @@ class ApiPlacesControllerTest < ActionDispatch::IntegrationTest
     end
 
     test "should place update using hastag" do
-        put "/api/places", params: {place: {name: "test", content: "test", tags: "#tags #example"}}
+        put "/api/places/1", params: {place: {name: "test", content: "test", tags: "#tags #example"}}
         assert_response :success
     end
 
