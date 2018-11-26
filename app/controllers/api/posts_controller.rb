@@ -1,5 +1,5 @@
 class Api::PostsController < ApplicationController
-    before_action :set_post, only: [:show, :edit, :update, :destroy]
+    before_action :set_post, only: [:show, :edit, :hashtags, :update, :destroy]
 
     # Pagenation Content Num
     PER = 20
@@ -16,6 +16,11 @@ class Api::PostsController < ApplicationController
       @q = Post.ransack(params[:q])
       @posts = @q.result
       render json: @posts
+    end
+
+    # POST /api/posts/hashtags
+    def hashtags
+      render json: @post.tag_list
     end
 
     # POST /api/posts/pagenation
