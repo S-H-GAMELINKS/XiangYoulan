@@ -44,6 +44,9 @@ gem 'ransack'
 # Using Kaminari
 gem 'kaminari'
 
+# Using Map
+gem 'geocoder'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
