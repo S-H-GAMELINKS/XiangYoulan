@@ -60,6 +60,8 @@ class Api::PlacesController < ApplicationController
     # PATCH/PUT /api/places/1.json
     def update
 
+      @place.tags.destroy_all
+
       add_tags
 
       if @place.update(place_params)
@@ -87,11 +89,12 @@ class Api::PlacesController < ApplicationController
       end
 
       def tags_params
-        params.require(:place).permit(:tags).to_s
+        params.require(:place).permit(:tags)
       end
 
       def add_tags
-        tags_params.split(" ").each do |tag|
+        tags = tags_params[:tags]
+        tags.split(" ").each do |tag|
           @place.tag_list.add(tag)
         end
       end

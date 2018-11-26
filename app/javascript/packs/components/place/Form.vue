@@ -10,6 +10,10 @@
                 <vue-editor v-model="content" :editorOptions="editorSettings">
                 </vue-editor>
             </div>
+            <div class="form-group">
+                <label>Hashtag</label>
+                <input v-model="hashtags">
+            </div>
         </form>
         <p>
             <button type="button" class="btn btn-primary" v-if="creatable" v-on:click="createPlace">Create</button>
@@ -34,6 +38,7 @@ export default {
         return {
             name: "",
             content: "",
+            hashtags: "",
             editorSettings: {
                 modules: {
                     imageDrop: true,
@@ -76,7 +81,7 @@ export default {
             axios.defaults.headers['X-CSRF-TOKEN'] = $('meta[name=csrf-token]').attr('content');
             axios.defaults.headers['content-type'] = 'application/json';
 
-            axios.post('/api/places', {place: {name: this.name, content: this.content}}).then((response) => {
+            axios.post('/api/places', {place: {name: this.name, content: this.content, tags: this.hashtags}}).then((response) => {
 
                 if (this.name === "" || this.content === "") {
                     alert("Can't be black in Title or Content!!");
@@ -94,7 +99,7 @@ export default {
 
             const id = String(this.$route.path).replace(/\/places\//, '').replace(/\/edit/, '');
 
-            axios.put('/api/places/' + id, {place: {name: this.name, content: this.content}}).then((response) => {
+            axios.put('/api/places/' + id, {place: {name: this.name, content: this.content, tags: this.hashtags}}).then((response) => {
 
                 if (this.name === "" || this.content === "") {
                     alert("Can't be black in Title or Content!!");
