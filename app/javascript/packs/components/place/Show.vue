@@ -14,6 +14,7 @@
 
 import axios from 'axios';
 import SocialShare from '../layouts/SocialShare.vue';
+import $ from 'jquery';
 
 export default {
     data: function() {
