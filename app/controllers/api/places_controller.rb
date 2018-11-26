@@ -46,6 +46,8 @@ class Api::PlacesController < ApplicationController
     # POST /api/places.json
     def create
       @place = Place.new(place_params)
+
+      add_tags
       
       if @place.save
         render json: @place
@@ -57,6 +59,9 @@ class Api::PlacesController < ApplicationController
     # PATCH/PUT /api/places/1
     # PATCH/PUT /api/places/1.json
     def update
+      
+      add_tags
+
       if @place.update(place_params)
         render json: @place
       else
@@ -79,5 +84,15 @@ class Api::PlacesController < ApplicationController
       # Never trust parameters from the scary internet, only allow the white list through.
       def place_params
         params.require(:place).permit(:name, :content)
+      end
+
+      def tags_params
+        params.require(:place).permit(:tags)
+      end
+
+      def add_tags
+        tags_params.split(" ").each do |tag|
+          @place.tag_list.add(tag)
+        end
       end
   end
