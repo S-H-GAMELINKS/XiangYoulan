@@ -19,7 +19,7 @@ class Api::PostsController < ApplicationController
     end
 
     # POST /api/posts/hashtags
-    def hashtags
+    def hashtags      
       render json: @post.tag_list
     end
 
