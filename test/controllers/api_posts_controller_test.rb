@@ -41,6 +41,11 @@ class ApiControllerTest < ActionDispatch::IntegrationTest
         assert_response :success
     end
 
+    test "should post update using hashtag" do
+        put "/api/posts", params: {post: {title: "test", content: "test", tags: {"#tags #example"}}}
+        assert_response :success
+    end
+
     test "should null post can't update" do
         put "/api/posts/1", params: {post: {title: "", content: ""}}
         assert_equal true, response.body.include?("can't be blank")
