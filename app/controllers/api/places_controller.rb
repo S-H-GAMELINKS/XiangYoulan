@@ -59,7 +59,7 @@ class Api::PlacesController < ApplicationController
     # PATCH/PUT /api/places/1
     # PATCH/PUT /api/places/1.json
     def update
-      
+
       add_tags
 
       if @place.update(place_params)
@@ -87,7 +87,7 @@ class Api::PlacesController < ApplicationController
       end
 
       def tags_params
-        params.require(:place).permit(:tags)
+        params.require(:place).permit(:tags).to_s
       end
 
       def add_tags

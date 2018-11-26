@@ -87,7 +87,7 @@ class Api::PostsController < ApplicationController
       end
 
       def tags_params
-        params.require(:post).permit(:tags)
+        params.require(:post).permit(:tags).to_s
       end
 
       def add_tags
