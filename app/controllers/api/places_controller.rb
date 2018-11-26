@@ -1,5 +1,5 @@
 class Api::PlacesController < ApplicationController
-    before_action :set_place, only: [:show, :edit, :update, :destroy]
+    before_action :set_place, only: [:show, :edit, :hashtags, :update, :destroy]
 
     # Pagenation Content Num
     PER = 20
@@ -16,6 +16,11 @@ class Api::PlacesController < ApplicationController
       @q = Place.ransack(params[:q])
       @places = @q.result
       render json: @places
+    end
+
+    # POST /api/places/hashtags
+    def hashtags
+      render json: @place.tag_list
     end
 
     # POST /api/places/pagenation
