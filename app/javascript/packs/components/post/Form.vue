@@ -56,6 +56,7 @@ export default {
         this.checkAddress();
         if(this.editable) {
             this.getPost();
+            this.getHashTags();
         }
     },
     methods: {
@@ -107,6 +108,17 @@ export default {
                     alert("Success!");
                     this.$router.push({path: '/posts'});
                 }
+            }, (error) => {
+                alert(error);
+            })
+        },
+        getHashTags: function() {
+            axios.defaults.headers['X-CSRF-TOKEN'] = $('meta[name=csrf-token]').attr('content');
+            axios.defaults.headers['content-type'] = 'application/json';
+
+            const id = String(this.$route.path).replace(/\/posts\//, '').replace(/\/edit/, '');
+            axios.post('/api/posts/hashtags', {id: id}).then((response) => {
+                this.hashtags = response.data.join(' ');
             }, (error) => {
                 alert(error);
             })
