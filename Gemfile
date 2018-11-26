@@ -47,6 +47,9 @@ gem 'kaminari'
 # Using Map
 gem 'geocoder'
 
+# Using gon
+gem 'gon'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
