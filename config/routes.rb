@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     resources :posts
     post '/posts/search' => 'posts#search'
     post '/posts/pagenation' => 'posts#pagenation'
+    post '/posts/hashtags' => 'posts#hashtags'
 
     resources :places
     post '/places/search' => 'places#search'
