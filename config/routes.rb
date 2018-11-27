@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     resources :places
     post '/places/search' => 'places#search'
     post '/places/pagenation' => 'places#pagenation'
+    post '/places/locatison' => 'places#location'
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
