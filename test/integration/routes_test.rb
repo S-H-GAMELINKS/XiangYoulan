@@ -60,4 +60,9 @@ class RoutesTest < ActionDispatch::IntegrationTest
     get "/places/new"
     assert_response :success
   end
+
+  test "should get /hashtags/:id" do
+    get "/hashtags/test"
+    assert_response :success
+  end
 end
