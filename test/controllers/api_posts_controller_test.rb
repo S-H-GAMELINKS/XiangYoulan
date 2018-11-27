@@ -70,4 +70,9 @@ class ApiControllerTest < ActionDispatch::IntegrationTest
         post "/api/posts/hashtags", params: {id: 1}
         assert_response :success
     end
+
+    test "should post hashtag search" do
+        post "/api/posts/search/hashtags", params: {tag: "#test"}
+        assert_response :success
+    end
 end
