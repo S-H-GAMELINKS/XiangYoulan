@@ -23,6 +23,12 @@ class Api::PostsController < ApplicationController
       render json: @post.tag_list
     end
 
+    # POST /api/posts/search/hashtags
+    def search_hashtags
+      @posts = Post.tagged_with(params[:tag])
+      render json: @posts
+    end
+
     # POST /api/posts/pagenation
     def pagenation
       @posts = Post.page(params[:page]).per(PER)
