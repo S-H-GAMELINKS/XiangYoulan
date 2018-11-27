@@ -53,6 +53,7 @@ class Api::PlacesController < ApplicationController
       @place = Place.new(place_params)
       
       if @place.save
+        @place.update(place_params)
         render json: @place
       else
         render json: @place.errors
@@ -83,6 +84,6 @@ class Api::PlacesController < ApplicationController
   
       # Never trust parameters from the scary internet, only allow the white list through.
       def place_params
-        params.require(:place).permit(:name, :content)
+        params.require(:place).permit(:name, :content, :latitude, :longitude)
       end
   end

@@ -103,7 +103,7 @@ export default {
             axios.defaults.headers['X-CSRF-TOKEN'] = $('meta[name=csrf-token]').attr('content');
             axios.defaults.headers['content-type'] = 'application/json';
 
-            axios.post('/api/places', {place: {name: this.name, content: this.content}}).then((response) => {
+            axios.post('/api/places', {place: {name: this.name, content: this.content, latitude: parseFloat(this.geocode.lat), longitude: parseFloat(this.geocode.lng)}}).then((response) => {
 
                 if (this.name === "" || this.content === "") {
                     alert("Can't be black in Title or Content!!");
@@ -121,7 +121,7 @@ export default {
 
             const id = String(this.$route.path).replace(/\/places\//, '').replace(/\/edit/, '');
 
-            axios.put('/api/places/' + id, {place: {name: this.name, content: this.content}}).then((response) => {
+            axios.put('/api/places/' + id, {place: {name: this.name, content: this.content, latitude: parseFloat(this.geocode.lat), longitude: parseFloat(this.geocode.lng)}}).then((response) => {
 
                 if (this.name === "" || this.content === "") {
                     alert("Can't be black in Title or Content!!");
