@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   get "/places/:id/edit", to: "web#index"
   get "/places/new", to: "web#index"
 
+  get "/hashtags/:id", to: "web#index"
+
   devise_for :users
   namespace :api, format: 'json' do
     resources :posts
