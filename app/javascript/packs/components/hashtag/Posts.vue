@@ -32,7 +32,7 @@ export default {
 
             this.posts.length = 0;
 
-            axios.post('/api/posts/hashtags', {tag: this.tag}).then((response) => {
+            axios.post('/api/posts/search/hashtags', {tag: this.tag}).then((response) => {
                 for(var i = 0; i < response.data.length; i++) {
                     this.posts.push(response.data[i]);
                 }

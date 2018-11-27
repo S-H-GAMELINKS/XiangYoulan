@@ -15,7 +15,7 @@ import Places from './Places.vue';
 import Posts from './Posts.vue';
 
 export default {
-    component: {
+    components: {
         'hashtag-place': Places,
         'hashtag-post': Posts
     }
