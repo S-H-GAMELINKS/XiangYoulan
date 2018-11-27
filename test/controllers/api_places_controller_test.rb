@@ -68,6 +68,10 @@ class ApiPlacesControllerTest < ActionDispatch::IntegrationTest
 
     test "should place hashtag" do
         post "/api/places/hashtags", params: {id: 1}
+    end
+    
+    test "should place lng & lat get" do
+        post "/api/places/location", params: { name: "Paris" }
         assert_response :success
     end
 end

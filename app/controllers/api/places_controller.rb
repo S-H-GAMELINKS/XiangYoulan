@@ -28,7 +28,12 @@ class Api::PlacesController < ApplicationController
       @places = Place.page(params[:page]).per(PER)
       render json: @places
     end
-    # POST /api/places/search
+
+    # POST /api/places/location
+    def location
+      @location = Geocoder.search(params[:name])
+      render json: @location.first.coordinates
+    end
   
     # GET /api/places/1
     # GET /api/places/1.json
@@ -55,6 +60,7 @@ class Api::PlacesController < ApplicationController
       add_tags
       
       if @place.save
+        @place.update(place_params)
         render json: @place
       else
         render json: @place.errors
@@ -90,7 +96,7 @@ class Api::PlacesController < ApplicationController
   
       # Never trust parameters from the scary internet, only allow the white list through.
       def place_params
-        params.require(:place).permit(:name, :content)
+        params.require(:place).permit(:name, :content, :latitude, :longitude)
       end
 
       def tags_params
