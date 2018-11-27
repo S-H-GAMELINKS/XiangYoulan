@@ -6,7 +6,7 @@
         <p v-html="content"></p>
         <GmapMap
             :center="geocode"
-            :zoom="7"
+            :zoom="15"
             map-type-id="terrain"
             style="width: 500px; height: 300px"
         >
