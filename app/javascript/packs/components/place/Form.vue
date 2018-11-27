@@ -91,6 +91,9 @@ export default {
             axios.get('/api/places/' + id).then((response) => {
                 this.name = response.data.name;
                 this.content = response.data.content;
+                this.geocode.lat = response.data.latitude;
+                this.geocode.lng = response.data.longitude
+                console.log(response);
             }, (error) => {
                 alert(error);
             })
