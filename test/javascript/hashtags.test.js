@@ -1,7 +1,7 @@
 import { shallowMount } from "@vue/test-utils";
 import Hashtag from 'components/hashtag/Hashtags';
-import Place from 'components/hashtag/Place';
-import Post from 'components/hashtag/Post';
+import Place from 'components/hashtag/Places';
+import Post from 'components/hashtag/Posts';
 
 describe('Search Hashtags', () => {
     it('should render Hashtag', () => {
