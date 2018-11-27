@@ -27,7 +27,7 @@ class Api::PlacesController < ApplicationController
     # POST /api/places/location
     def location
       @location = Geocoder.search(params[:name])
-      render json: @location
+      render json: @location.first.coordinates
     end
   
     # GET /api/places/1

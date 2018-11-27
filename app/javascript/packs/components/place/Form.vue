@@ -11,6 +11,19 @@
                 </vue-editor>
             </div>
         </form>
+        <GmapMap
+            :center="geocode"
+            :zoom="15"
+            map-type-id="terrain"
+            style="width: 500px; height: 300px"
+        >
+            <GmapMarker
+                :position="geocode"
+                :clickable="true"
+                :draggable="true"
+                @click="center=geocode"
+            />
+        </GmapMap>
         <p>
             <button type="button" class="btn btn-primary" v-if="creatable" v-on:click="createPlace">Create</button>
             <button type="button" class="btn btn-primary" v-if="editable" v-on:click="editPlace">Update</button>
@@ -34,6 +47,10 @@ export default {
         return {
             name: "",
             content: "",
+            geocode: {
+                lat: 0.0,
+                lng: 0.0
+            },
             editorSettings: {
                 modules: {
                     imageDrop: true,
@@ -46,6 +63,12 @@ export default {
     },
     components: {
         VueEditor
+    },
+    watch: {
+        name: function() {
+            this.getLocation();
+            console.log(this.geocode);
+        }
     },
     mounted: function() {
         this.checkAddress();
@@ -102,6 +125,17 @@ export default {
                     alert("Success!");
                     this.$router.push({path: '/places'});
                 }
+            }, (error) => {
+                alert(error);
+            })
+        },
+        getLocation: function() {
+            axios.defaults.headers['X-CSRF-TOKEN'] = $('meta[name=csrf-token]').attr('content');
+            axios.defaults.headers['content-type'] = 'application/json';
+
+            axios.post('/api/places/location', { name: this.name }).then((response) => {
+                this.geocode.lat = response.data[0];
+                this.geocode.lng = response.data[1];
             }, (error) => {
                 alert(error);
             })
