@@ -68,6 +68,7 @@ class ApiPlacesControllerTest < ActionDispatch::IntegrationTest
 
     test "should place hashtag" do
         post "/api/places/hashtags", params: {id: 1}
+        assert_response :success
     end
 
     test "should place hashtag search" do
