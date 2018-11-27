@@ -1,5 +1,5 @@
 class Api::PostsController < ApplicationController
-    before_action :set_post, only: [:show, :edit, :update, :destroy]
+    before_action :set_post, only: [:show, :edit, :hashtags, :update, :destroy]
 
     # Pagenation Content Num
     PER = 20
@@ -15,6 +15,17 @@ class Api::PostsController < ApplicationController
     def search
       @q = Post.ransack(params[:q])
       @posts = @q.result
+      render json: @posts
+    end
+
+    # POST /api/posts/hashtags
+    def hashtags      
+      render json: @post.tag_list
+    end
+
+    # POST /api/posts/search/hashtags
+    def search_hashtags
+      @posts = Post.tagged_with(params[:tag])
       render json: @posts
     end
 
@@ -46,6 +57,8 @@ class Api::PostsController < ApplicationController
     # POST /api/posts.json
     def create
       @post = Post.new(post_params)
+
+      add_tags
       
       if @post.save
         render json: @post
@@ -57,6 +70,11 @@ class Api::PostsController < ApplicationController
     # PATCH/PUT /api/posts/1
     # PATCH/PUT /api/posts/1.json
     def update
+
+      @post.tags.destroy_all
+
+      add_tags
+
       if @post.update(post_params)
         render json: @post
       else
@@ -79,5 +97,16 @@ class Api::PostsController < ApplicationController
       # Never trust parameters from the scary internet, only allow the white list through.
       def post_params
         params.require(:post).permit(:title, :content)
+      end
+
+      def tags_params
+        params.require(:post).permit(:tags)
+      end
+
+      def add_tags
+        tags = tags_params[:tags]
+        tags.split(" ").each do |tag|
+          @post.tag_list.add(tag)
+        end
       end
   end

@@ -22,22 +22,32 @@ class ApiControllerTest < ActionDispatch::IntegrationTest
     end
 
     test "should post create" do
-        post "/api/posts", params: {post: {title: "test", content: "test"}}
+        post "/api/posts", params: {post: {title: "test", content: "test", tags: ""}}
+        assert_response :success
+    end
+
+    test "should post create using hashtag" do
+        post "/api/posts", params: {post: {title: "test", content: "test", tags: "#tags #example"}}
         assert_response :success
     end
 
     test "should null post can't create" do
-        post "/api/posts", params: {post: {title: "", content: ""}}
+        post "/api/posts", params: {post: {title: "", content: "", tags: ""}}
         assert_equal true, response.body.include?("can't be blank")
     end
 
     test "should post update" do
-        put "/api/posts/1", params: {post: {title: "test", content: "test"}}
+        put "/api/posts/1", params: {post: {title: "test", content: "test", tags: ""}}
+        assert_response :success
+    end
+
+    test "should post update using hashtag" do
+        put "/api/posts/1", params: {post: {title: "test", content: "test", tags: "#tags #example"}}
         assert_response :success
     end
 
     test "should null post can't update" do
-        put "/api/posts/1", params: {post: {title: "", content: ""}}
+        put "/api/posts/1", params: {post: {title: "", content: "", tags: ""}}
         assert_equal true, response.body.include?("can't be blank")
     end
 
@@ -53,6 +63,16 @@ class ApiControllerTest < ActionDispatch::IntegrationTest
 
     test "should post pagenation" do
         post "/api/posts/pagenation", params: {page: 1}
+        assert_response :success
+    end
+
+    test "should post hashtag" do
+        post "/api/posts/hashtags", params: {id: 1}
+        assert_response :success
+    end
+
+    test "should post hashtag search" do
+        post "/api/posts/search/hashtags", params: {tag: "#test"}
         assert_response :success
     end
 end

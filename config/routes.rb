@@ -14,15 +14,21 @@ Rails.application.routes.draw do
   get "/places/:id/edit", to: "web#index"
   get "/places/new", to: "web#index"
 
+  get "/hashtags/:id", to: "web#index"
+
   devise_for :users
   namespace :api, format: 'json' do
     resources :posts
     post '/posts/search' => 'posts#search'
     post '/posts/pagenation' => 'posts#pagenation'
+    post '/posts/hashtags' => 'posts#hashtags'
+    post '/posts/search/hashtags' => 'posts#search_hashtags'
 
     resources :places
     post '/places/search' => 'places#search'
     post '/places/pagenation' => 'places#pagenation'
+    post '/places/hashtags' => 'places#hashtags'
+    post '/places/search/hashtags' => 'places#search_hashtags'
     post '/places/location' => 'places#location'
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

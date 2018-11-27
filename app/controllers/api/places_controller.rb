@@ -1,5 +1,5 @@
 class Api::PlacesController < ApplicationController
-    before_action :set_place, only: [:show, :edit, :update, :destroy]
+    before_action :set_place, only: [:show, :edit, :hashtags, :update, :destroy]
 
     # Pagenation Content Num
     PER = 20
@@ -15,6 +15,17 @@ class Api::PlacesController < ApplicationController
     def search
       @q = Place.ransack(params[:q])
       @places = @q.result
+      render json: @places
+    end
+
+    # POST /api/places/hashtags
+    def hashtags
+      render json: @place.tag_list
+    end
+
+    # POST /api/places/search/hashtags
+    def search_hashtags
+      @places = Place.tagged_with(params[:tag])
       render json: @places
     end
 
@@ -51,6 +62,8 @@ class Api::PlacesController < ApplicationController
     # POST /api/places.json
     def create
       @place = Place.new(place_params)
+
+      add_tags
       
       if @place.save
         @place.update(place_params)
@@ -63,6 +76,11 @@ class Api::PlacesController < ApplicationController
     # PATCH/PUT /api/places/1
     # PATCH/PUT /api/places/1.json
     def update
+
+      @place.tags.destroy_all
+
+      add_tags
+
       if @place.update(place_params)
         render json: @place
       else
@@ -85,5 +103,16 @@ class Api::PlacesController < ApplicationController
       # Never trust parameters from the scary internet, only allow the white list through.
       def place_params
         params.require(:place).permit(:name, :content, :latitude, :longitude)
+      end
+
+      def tags_params
+        params.require(:place).permit(:tags)
+      end
+
+      def add_tags
+        tags = tags_params[:tags]
+        tags.split(" ").each do |tag|
+          @place.tag_list.add(tag)
+        end
       end
   end

@@ -10,6 +10,10 @@
                 <vue-editor v-model="content" :editorOptions="editorSettings">
                 </vue-editor>
             </div>
+            <div class="form-group">
+                <label>Hashtag</label>
+                <input v-model="hashtags">
+            </div>
         </form>
         <p>
             <button type="button" class="btn btn-primary" v-if="creatable" v-on:click="createPost">Create</button>
@@ -34,6 +38,7 @@ export default {
         return {
             title: "",
             content: "",
+            hashtags: "",
             editorSettings: {
                 modules: {
                     imageDrop: true,
@@ -51,6 +56,7 @@ export default {
         this.checkAddress();
         if(this.editable) {
             this.getPost();
+            this.getHashTags();
         }
     },
     methods: {
@@ -76,7 +82,7 @@ export default {
             axios.defaults.headers['X-CSRF-TOKEN'] = $('meta[name=csrf-token]').attr('content');
             axios.defaults.headers['content-type'] = 'application/json';
 
-            axios.post('/api/posts', {post: {title: this.title, content: this.content}}).then((response) => {
+            axios.post('/api/posts', {post: {title: this.title, content: this.content, tags: this.hashtags}}).then((response) => {
 
                 if (this.title === "" || this.content === "") {
                     alert("Can't be black in Title or Content!!");
@@ -94,7 +100,7 @@ export default {
 
             const id = String(this.$route.path).replace(/\/posts\//, '').replace(/\/edit/, '');
 
-            axios.put('/api/posts/' + id, {post: {title: this.title, content: this.content}}).then((response) => {
+            axios.put('/api/posts/' + id, {post: {title: this.title, content: this.content, tags: this.hashtags}}).then((response) => {
 
                 if (this.title === "" || this.content === "") {
                     alert("Can't be black in Title or Content!!");
@@ -102,6 +108,17 @@ export default {
                     alert("Success!");
                     this.$router.push({path: '/posts'});
                 }
+            }, (error) => {
+                alert(error);
+            })
+        },
+        getHashTags: function() {
+            axios.defaults.headers['X-CSRF-TOKEN'] = $('meta[name=csrf-token]').attr('content');
+            axios.defaults.headers['content-type'] = 'application/json';
+
+            const id = String(this.$route.path).replace(/\/posts\//, '').replace(/\/edit/, '');
+            axios.post('/api/posts/hashtags', {id: id}).then((response) => {
+                this.hashtags = response.data.join(' ');
             }, (error) => {
                 alert(error);
             })

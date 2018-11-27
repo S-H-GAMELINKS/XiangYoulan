@@ -16,6 +16,8 @@ import PlacesCreate from '../components/place/Create.vue';
 import PlacesShow from '../components/place/Show.vue';
 import PlacesEdit from '../components/place/Edit.vue';
 
+import Hashtags from '../components/hashtag/Hashtags.vue';
+
 Vue.use(VueRouter)
 
 export default new VueRouter({
@@ -33,5 +35,6 @@ export default new VueRouter({
         { path: '/places/new', component: PlacesCreate },
         { path: '/places/:id', component: PlacesShow, name: 'places_show'},
         { path: '/places/:id/edit', component: PlacesEdit, name: 'places_edits'},
+        { path: '/hashtags/:id', component: Hashtags, name: 'hashtags'},
     ]
 })

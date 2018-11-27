@@ -10,6 +10,10 @@
                 <vue-editor v-model="content" :editorOptions="editorSettings">
                 </vue-editor>
             </div>
+            <div class="form-group">
+                <label>Hashtag</label>
+                <input v-model="hashtags">
+            </div>
         </form>
         <GmapMap
             :center="geocode"
@@ -48,6 +52,7 @@ export default {
         return {
             name: "",
             content: "",
+            hashtags: "",
             geocode: {
                 lat: 0.0,
                 lng: 0.0
@@ -75,6 +80,7 @@ export default {
         this.checkAddress();
         if(this.editable) {
             this.getPlace();
+            this.getHashTags();
         }
     },
     methods: {
@@ -103,7 +109,7 @@ export default {
             axios.defaults.headers['X-CSRF-TOKEN'] = $('meta[name=csrf-token]').attr('content');
             axios.defaults.headers['content-type'] = 'application/json';
 
-            axios.post('/api/places', {place: {name: this.name, content: this.content, latitude: parseFloat(this.geocode.lat), longitude: parseFloat(this.geocode.lng)}}).then((response) => {
+            axios.post('/api/places', {place: {name: this.name, content: this.content, tags: this.hashtags, latitude: parseFloat(this.geocode.lat), longitude: parseFloat(this.geocode.lng)}}).then((response) => {
 
                 if (this.name === "" || this.content === "") {
                     alert("Can't be black in Title or Content!!");
@@ -121,7 +127,7 @@ export default {
 
             const id = String(this.$route.path).replace(/\/places\//, '').replace(/\/edit/, '');
 
-            axios.put('/api/places/' + id, {place: {name: this.name, content: this.content, latitude: parseFloat(this.geocode.lat), longitude: parseFloat(this.geocode.lng)}}).then((response) => {
+            axios.put('/api/places/' + id, {place: {name: this.name, content: this.content, tags: this.hashtags ,latitude: parseFloat(this.geocode.lat), longitude: parseFloat(this.geocode.lng)}}).then((response) => {
 
                 if (this.name === "" || this.content === "") {
                     alert("Can't be black in Title or Content!!");
@@ -129,6 +135,17 @@ export default {
                     alert("Success!");
                     this.$router.push({path: '/places'});
                 }
+            }, (error) => {
+                alert(error);
+            })
+        },
+        getHashTags: function() {
+            axios.defaults.headers['X-CSRF-TOKEN'] = $('meta[name=csrf-token]').attr('content');
+            axios.defaults.headers['content-type'] = 'application/json';
+
+            const id = String(this.$route.path).replace(/\/places\//, '').replace(/\/edit/, '');
+            axios.post('/api/places/hashtags', {id: id}).then((response) => {
+                this.hashtags = response.data.join(' ');
             }, (error) => {
                 alert(error);
             })
