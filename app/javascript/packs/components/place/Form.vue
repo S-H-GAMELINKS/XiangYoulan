@@ -141,7 +141,7 @@ export default {
                 this.geocode.lat = response.data[0];
                 this.geocode.lng = response.data[1];
             }, (error) => {
-                alert(error);
+                console.log(error);
             })
         },
         updateLocation(location) {
