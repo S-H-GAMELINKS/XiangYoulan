@@ -23,6 +23,12 @@ class Api::PlacesController < ApplicationController
       render json: @place.tag_list
     end
 
+    # POST /api/place/search/hashtags
+    def search_hashtags
+      @places = Place.tagged_with(params[:tag])
+      render json: @places
+    end
+
     # POST /api/places/pagenation
     def pagenation
       @places = Place.page(params[:page]).per(PER)
