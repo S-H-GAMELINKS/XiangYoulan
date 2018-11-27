@@ -14,3 +14,9 @@
  *= require_tree .
  *= require_self
  */
+
+.vue-map-container,
+.vue-map-container .vue-map {
+  width: 100%;
+  height: 100%;
+} 

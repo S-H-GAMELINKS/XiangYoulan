@@ -8,7 +8,6 @@ import Header from './components/layouts/Header.vue';
 Vue.use(VueGoogleMaps, {
     load: {
       key: gon.GoogleMapKey,
-      libraries: 'places', 
     },
 })
 
