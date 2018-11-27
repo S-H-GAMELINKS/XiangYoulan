@@ -55,4 +55,9 @@ class ApiPlacesControllerTest < ActionDispatch::IntegrationTest
         post "/api/places/pagenation", params: {page: 1}
         assert_response :success
     end
+
+    test "should place lng & lat get" do
+        post "/api/places/locations", params: { name: "Paris" }
+        assert_response :success
+    end
 end
