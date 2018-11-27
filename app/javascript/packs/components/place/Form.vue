@@ -11,6 +11,20 @@
                 </vue-editor>
             </div>
         </form>
+        <GmapMap
+            :center="geocode"
+            :zoom="15"
+            map-type-id="terrain"
+            style="width: 500px; height: 300px"
+        >
+            <GmapMarker
+                :position="geocode"
+                :clickable="true"
+                :draggable="true"
+                @click="center=geocode"
+                @drag="updateLocation"
+            />
+        </GmapMap>
         <p>
             <button type="button" class="btn btn-primary" v-if="creatable" v-on:click="createPlace">Create</button>
             <button type="button" class="btn btn-primary" v-if="editable" v-on:click="editPlace">Update</button>
@@ -34,6 +48,10 @@ export default {
         return {
             name: "",
             content: "",
+            geocode: {
+                lat: 0.0,
+                lng: 0.0
+            },
             editorSettings: {
                 modules: {
                     imageDrop: true,
@@ -46,6 +64,12 @@ export default {
     },
     components: {
         VueEditor
+    },
+    watch: {
+        name: function() {
+            this.getLocation();
+            console.log(this.geocode);
+        }
     },
     mounted: function() {
         this.checkAddress();
@@ -68,6 +92,9 @@ export default {
             axios.get('/api/places/' + id).then((response) => {
                 this.name = response.data.name;
                 this.content = response.data.content;
+                this.geocode.lat = response.data.latitude;
+                this.geocode.lng = response.data.longitude
+                console.log(response);
             }, (error) => {
                 alert(error);
             })
@@ -76,7 +103,7 @@ export default {
             axios.defaults.headers['X-CSRF-TOKEN'] = $('meta[name=csrf-token]').attr('content');
             axios.defaults.headers['content-type'] = 'application/json';
 
-            axios.post('/api/places', {place: {name: this.name, content: this.content}}).then((response) => {
+            axios.post('/api/places', {place: {name: this.name, content: this.content, latitude: parseFloat(this.geocode.lat), longitude: parseFloat(this.geocode.lng)}}).then((response) => {
 
                 if (this.name === "" || this.content === "") {
                     alert("Can't be black in Title or Content!!");
@@ -94,7 +121,7 @@ export default {
 
             const id = String(this.$route.path).replace(/\/places\//, '').replace(/\/edit/, '');
 
-            axios.put('/api/places/' + id, {place: {name: this.name, content: this.content}}).then((response) => {
+            axios.put('/api/places/' + id, {place: {name: this.name, content: this.content, latitude: parseFloat(this.geocode.lat), longitude: parseFloat(this.geocode.lng)}}).then((response) => {
 
                 if (this.name === "" || this.content === "") {
                     alert("Can't be black in Title or Content!!");
@@ -105,7 +132,24 @@ export default {
             }, (error) => {
                 alert(error);
             })
-        }
+        },
+        getLocation: function() {
+            axios.defaults.headers['X-CSRF-TOKEN'] = $('meta[name=csrf-token]').attr('content');
+            axios.defaults.headers['content-type'] = 'application/json';
+
+            axios.post('/api/places/location', { name: this.name }).then((response) => {
+                this.geocode.lat = response.data[0];
+                this.geocode.lng = response.data[1];
+            }, (error) => {
+                console.log(error);
+            })
+        },
+        updateLocation(location) {
+            this.geocode = {
+                lat: location.latLng.lat(),
+                lng: location.latLng.lng(),
+            };
+        },
     }
 }
 </script>
