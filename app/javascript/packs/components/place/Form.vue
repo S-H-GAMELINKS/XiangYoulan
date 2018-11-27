@@ -22,6 +22,7 @@
                 :clickable="true"
                 :draggable="true"
                 @click="center=geocode"
+                @drag="updateLocation"
             />
         </GmapMap>
         <p>
@@ -142,7 +143,13 @@ export default {
             }, (error) => {
                 alert(error);
             })
-        }
+        },
+        updateLocation(location) {
+            this.geocode = {
+                lat: location.latLng.lat(),
+                lng: location.latLng.lng(),
+            };
+        },
     }
 }
 </script>
