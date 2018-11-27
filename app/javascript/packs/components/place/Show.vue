@@ -5,7 +5,7 @@
         <p><h2>Content</h2></p>
         <p v-html="content"></p>
         <div v-for="(tag, key, index) in hashtags" :key=index>
-            {{tag}}
+            <router-link :to="{name: 'hashtags', params: {id: tag}}">{{tag}}</router-link>
         </div>
         <GmapMap
             :center="geocode"
