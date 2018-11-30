@@ -65,4 +65,9 @@ class RoutesTest < ActionDispatch::IntegrationTest
     get "/hashtags/test"
     assert_response :success
   end
+
+  test "should get /sign_up" do
+    get "/sign_up"
+    assert_response :success
+  end
 end
