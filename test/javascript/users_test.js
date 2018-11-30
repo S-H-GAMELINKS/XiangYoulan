@@ -4,7 +4,7 @@ import Edit from 'components/user/Edit';
 
 describe('Users pages', () => {
     it('should render User mypages', () => {
-        const wrapper = shallowMount(Index);
+        const wrapper = shallowMount(MyPages);
         expect(wrapper).not.toBeNull();
     });
 
