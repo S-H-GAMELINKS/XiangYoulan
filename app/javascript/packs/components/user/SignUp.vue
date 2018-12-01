@@ -39,6 +39,11 @@ export default {
             axios.defaults.headers['content-type'] = 'application/json';
 
             axios.post('/users', {user: { email: this.email, password: this.password, password_confirmation: this.password_confirm }}).then((response) => {
+                axios.post('/users/sign_in', {user: { email: this.email, password: this.password }}).then((response) => {
+                    console.log(response);
+                }, (error) => {
+                    console.log(error);
+                })
                 this.$router.push({path: '/'});
             }, (error) => {
                 alert(error);
