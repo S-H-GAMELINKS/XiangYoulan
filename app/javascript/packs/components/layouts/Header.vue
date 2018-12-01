@@ -13,6 +13,7 @@
       <router-link to="/posts" class="dropdown-item">Posts</router-link>
       <router-link to="/places" class="dropdown-item">Places</router-link>
       <router-link to="/sign_up" class="dropdown-item">SignUp</router-link>
+      <span v-on:click="userSignOut" class="dropdown-item">SignOut</span>
     </div>
   </div>
   <form class="form-inline my-2 my-lg-0">
@@ -24,10 +25,28 @@
 </template>
 
 <script>
+
+import axios from 'axios';
+import $ from 'jquery';
+import { error } from 'util';
+
 export default {
   data: function() {
     return {
       keyword: ""
+    }
+  },
+  methods: {
+    userSignOut: function() {
+      axios.defaults.headers['X-CSRF-TOKEN'] = $('meta[name=csrf-token]').attr('content');
+      axios.defaults.headers['content-type'] = 'application/json';
+
+      axios.delete('/users/sign_out').then((response) => {
+        console.log(response);
+        alert('Sing Out!');
+      }, (error) => {
+        alert(error);
+      })
     }
   }
 }
