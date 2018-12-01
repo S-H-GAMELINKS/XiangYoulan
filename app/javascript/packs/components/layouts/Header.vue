@@ -45,7 +45,8 @@ export default {
         console.log(response);
         alert('Sing Out!');
       }, (error) => {
-        alert(error);
+        console.log(error);
+        alert('Sing Out!');
       })
     }
   }
