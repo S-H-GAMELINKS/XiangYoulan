@@ -18,6 +18,8 @@ import PlacesEdit from '../components/place/Edit.vue';
 
 import Hashtags from '../components/hashtag/Hashtags.vue';
 
+import SignUp from '../components/user/SignUp.vue';
+
 Vue.use(VueRouter)
 
 export default new VueRouter({
@@ -36,5 +38,6 @@ export default new VueRouter({
         { path: '/places/:id', component: PlacesShow, name: 'places_show'},
         { path: '/places/:id/edit', component: PlacesEdit, name: 'places_edits'},
         { path: '/hashtags/:id', component: Hashtags, name: 'hashtags'},
+        { path: '/sign_up', component: SignUp, name: 'user_sign_up'}
     ]
 })

@@ -12,6 +12,7 @@
       <router-link to="/contact" class="dropdown-item">Contact</router-link>
       <router-link to="/posts" class="dropdown-item">Posts</router-link>
       <router-link to="/places" class="dropdown-item">Places</router-link>
+      <router-link to="/sign_up" class="dropdown-item">SignUp</router-link>
     </div>
   </div>
   <form class="form-inline my-2 my-lg-0">
