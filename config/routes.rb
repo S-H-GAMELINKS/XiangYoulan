@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get "/hashtags/:id", to: "web#index"
 
   get "/sign_up", to: "web#index"
+  get "/sign_in", to: "web#index"
 
   devise_for :users
   namespace :api, format: 'json' do
