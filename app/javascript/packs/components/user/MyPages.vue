@@ -1,20 +1,8 @@
 <template>
     <div class="container">
-        <label> Name: {{name}} </label>
-        <label> Email: {{email}} </label>
+        <label> Name: {{$store.state.user.name}} </label>
+        <label> Email: {{$store.state.user.email}} </label>
         <label> About: </label>
-        <span v-html="about"> </span>
+        <span v-html="$store.state.user.about"> </span>
     </div>
 </template>
-
-<script>
-export default {
-    data: function() {
-        return {
-            name: this.$store.state.user.name,
-            email: this.$store.state.user.email,
-            about: this.$store.state.user.about
-        }
-    }
-}
-</script>
