@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get "/sign_in", to: "web#index"
 
   get "/users/mypages", to: "web#index"
+  get "/users/mypages/edit", to: "web#index"
   get "/users/:id", to: "web#index"
 
   devise_for :users
