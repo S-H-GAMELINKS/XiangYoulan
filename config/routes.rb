@@ -33,6 +33,8 @@ Rails.application.routes.draw do
     post '/places/hashtags' => 'places#hashtags'
     post '/places/search/hashtags' => 'places#search_hashtags'
     post '/places/location' => 'places#location'
+
+    put '/users' => 'users#update'
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
