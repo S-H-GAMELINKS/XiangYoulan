@@ -1,19 +1,20 @@
 <template>
     <div class="container">
-        <label> Name: {{name}} </label>
-        <label> Email: {{email}} </label>
+        <label> Name: {{$store.state.user.name}} </label>
+        <label> Email: {{$store.state.user.email}} </label>
         <label> About: </label>
-        <span v-html="about"> </span>
+        <span v-html="$store.state.user.about"> </span>
     </div>
 </template>
 
 <script>
 export default {
-    data: function() {
-        return {
-            name: "",
-            email: "",
-            about: ""
+    mounted: function() {
+        this.getInfo();
+    },
+    methods: {
+        getInfo: function() {
+            this.$store.commit('getSession');
         }
     }
 }
