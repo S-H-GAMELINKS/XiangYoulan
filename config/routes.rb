@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   get "/sign_up", to: "web#index"
   get "/sign_in", to: "web#index"
 
+  get "/users/:id", to: "web#index"
+
   devise_for :users
   namespace :api, format: 'json' do
     resources :posts
