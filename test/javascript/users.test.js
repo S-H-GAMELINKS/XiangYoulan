@@ -27,7 +27,16 @@ describe('Users pages', () => {
     });
 
     it('should render User Show page', () => {
-        const wrapper = shallowMount(UserShow);
+
+        const $route = {
+            path: '/users/1'
+        }
+
+        const wrapper = shallowMount(UsersShow, {
+            mocks: {
+              $route
+            }
+        });
         expect(wrapper).not.toBeNull();
     });
 });

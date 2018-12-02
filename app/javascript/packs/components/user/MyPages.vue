@@ -11,9 +11,9 @@
 export default {
     data: function() {
         return {
-            name: this.$store.state.user.name,
-            email: this.$store.state.user.email,
-            about: this.$store.state.user.about
+            name: "",
+            email: "",
+            about: ""
         }
     }
 }
