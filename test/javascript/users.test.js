@@ -4,10 +4,18 @@ import Edit from 'components/user/Edit';
 import SignIn from 'components/user/SignIn';
 import SignUp from 'components/user/SignUp';
 import UsersShow from 'components/user/Show';
+import Store from 'store/store';
 
 describe('Users pages', () => {
     it('should render User mypages', () => {
-        const wrapper = shallowMount(MyPages);
+
+        const $store = Store;
+
+        const wrapper = shallowMount(MyPages, {
+            mocks: {
+                $store
+              }
+        });
         expect(wrapper).not.toBeNull();
     });
 
