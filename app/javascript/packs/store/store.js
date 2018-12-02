@@ -38,7 +38,6 @@ const store = new Vuex.Store({
     },
     plugins: [ createPersistedState({
         key: 'loginSession',
-        paths: ['session'],
         storage: window.sessionStorage,
     })]
 });

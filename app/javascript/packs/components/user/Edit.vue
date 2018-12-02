@@ -3,19 +3,19 @@
         <form>
             <div class="form-group">
                 <label>Name</label>
-                <input class="form-control" v-model="name" placeholder="Input your name ......">
+                <input class="form-control" v-model="user.name" placeholder="Input your name ......">
             </div>
             <div class="form-group">
                 <label>E-Mail</label>
-                <input class="form-control" v-model="email" placeholder="Input your email ......">
+                <input class="form-control" v-model="user.email" placeholder="Input your email ......">
             </div>
             <div class="form-group">
                 <label>About</label>
-                <vue-editor class="form-control" v-model="about" :editorOptions="editorSettings"></vue-editor>
+                <vue-editor class="form-control" v-model="user.about" :editorOptions="editorSettings"></vue-editor>
             </div>
         </form>
         <p>
-            <button type="button" class="btn btn-primary" v-on:click="userSignIn">Sign In</button>
+            <button type="button" class="btn btn-primary" v-on:click="userInfoUpdate">Update</button>
         </p>
     </div>
 </template>
@@ -34,9 +34,13 @@ Quill.register("modules/imageResize", ImageResize);
 export default {
     data: function() {
         return {
-            name: "",
-            email: "",
-            about: ""
+            user: this.$store.state.user,
+            editorSettings: {
+                modules: {
+                    imageDrop: true,
+                    imageResize: {}
+                }
+            },
         }
     },
     components: {
@@ -46,8 +50,8 @@ export default {
         userInfoUpdate: function() {
             axios.defaults.headers['X-CSRF-TOKEN'] = $('meta[name=csrf-token]').attr('content');
             axios.defaults.headers['content-type'] = 'application/json';
-
-            axios.post('/api/users', {user: { name: this.name, email: this.email, about: this.about }}).then((response) => {
+            
+            axios.put('/api/users', {id: this.user.id, user: { name: this.user.name, email: this.user.email, about: this.user.about }}).then((response) => {
                 console.log(response);
                 this.$router.push({path: '/'});
             }, (error) => {
