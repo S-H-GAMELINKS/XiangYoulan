@@ -1,7 +1,7 @@
 class Api::UsersController < ApplicationController
     before_action :set_user, only: [:show, :update]
 
-    def session
+    def user_session
         render json: current_user
     end
 
