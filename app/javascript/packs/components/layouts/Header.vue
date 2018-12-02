@@ -37,6 +37,9 @@ export default {
       keyword: ""
     }
   },
+  mounted: function() {
+    this.getSession();
+  },
   methods: {
     userSignOut: function() {
       axios.defaults.headers['X-CSRF-TOKEN'] = $('meta[name=csrf-token]').attr('content');
@@ -49,6 +52,9 @@ export default {
         console.log(error);
         alert('Sing Out!');
       })
+    },
+    getSession: function() {
+      this.$store.commit('getSession');
     }
   }
 }
