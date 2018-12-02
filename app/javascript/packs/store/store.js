@@ -1,5 +1,6 @@
 import Vue from 'vue/dist/vue.esm';
 import Vuex from 'vuex';
+import createPersistedState from 'vuex-persistedstate';
 import axios from 'axios';
 import $ from 'jquery';
 
@@ -35,6 +36,11 @@ const store = new Vuex.Store({
             })
         }
     },
+    plugins: [ createPersistedState({
+        key: 'loginSession',
+        paths: ['session'],
+        storage: window.sessionStorage,
+    })]
 });
 
 export default store;
