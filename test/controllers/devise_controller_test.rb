@@ -22,7 +22,7 @@ class DeviseControllerTest < ActionDispatch::IntegrationTest
   test "should update user info" do
     post "/users", params: { user: { email: "test@hoge.com", password: "testhogehoge", password_confirmation: "testhogehoge" }}
     post "/users/sign_in", params: { user: { email: "test@hoge.com", password: "testhogehoge" }}
-    put "/api/users", params: { user: { email: "test@hogehoge.com", password: "testhogehoge", password_confirmation: "testhogehoge" }}
+    put "/api/users", params: { id: User.first.id, user: { email: "test@hogehoge.com", password: "testhogehoge", password_confirmation: "testhogehoge" }}
     assert_equal true,  User.first.email == "test@hogehoge.com"
   end
 end
