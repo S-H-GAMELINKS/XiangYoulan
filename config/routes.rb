@@ -16,6 +16,13 @@ Rails.application.routes.draw do
 
   get "/hashtags/:id", to: "web#index"
 
+  get "/sign_up", to: "web#index"
+  get "/sign_in", to: "web#index"
+
+  get "/users/mypages", to: "web#index"
+  get "/users/mypages/edit", to: "web#index"
+  get "/users/:id", to: "web#index"
+
   devise_for :users
   namespace :api, format: 'json' do
     resources :posts
@@ -30,6 +37,10 @@ Rails.application.routes.draw do
     post '/places/hashtags' => 'places#hashtags'
     post '/places/search/hashtags' => 'places#search_hashtags'
     post '/places/location' => 'places#location'
+
+    put '/users' => 'users#update'
+    get '/users/sessions' => 'users#user_session'
+    get '/users/:id' => 'users#show'
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
