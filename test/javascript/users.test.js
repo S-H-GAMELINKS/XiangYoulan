@@ -20,7 +20,14 @@ describe('Users pages', () => {
     });
 
     it('should render User Edit', () => {
-        const wrapper = shallowMount(Edit);
+
+        const $store = Store;
+
+        const wrapper = shallowMount(Edit, {
+            mocks: {
+                $store
+              }
+        });
         expect(wrapper).not.toBeNull();
     });
 
