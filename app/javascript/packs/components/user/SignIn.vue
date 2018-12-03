@@ -11,7 +11,9 @@
             </div>
         </form>
         <p>
-            <button type="button" class="btn btn-primary" v-on:click="userSignIn">Sign In</button>
+            <button type="button" class="btn btn-primary" v-on:click="userSignIn">
+                <a href="/">Sign In</a>
+            </button>
         </p>
     </div>
 </template>
@@ -35,7 +37,6 @@ export default {
 
             axios.post('/users/sign_in', {user: { email: this.email, password: this.password }}).then((response) => {
                 console.log(response);
-                this.$router.push({path: '/'});
             }, (error) => {
                 console.log(error);
             })
