@@ -15,7 +15,9 @@
             </div>
         </form>
         <p>
-            <button type="button" class="btn btn-primary" v-on:click="userSignUp">Sign Up</button>
+            <button type="button" class="btn btn-primary" v-on:click="userSignUp">
+                <a href="/">Sign Up</a>
+            </button>
         </p>
     </div>
 </template>
@@ -44,7 +46,6 @@ export default {
                 }, (error) => {
                     console.log(error);
                 })
-                this.$router.push({path: '/'});
             }, (error) => {
                 alert(error);
             })
