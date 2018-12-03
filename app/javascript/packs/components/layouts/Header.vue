@@ -12,7 +12,7 @@
       <router-link to="/contact" class="dropdown-item">Contact</router-link>
       <router-link to="/posts" class="dropdown-item">Posts</router-link>
       <router-link to="/places" class="dropdown-item">Places</router-link>
-      <router-link to="/" v-on:click.native="userSignOut" v-if="user.session" class="dropdown-item">SignOut</router-link>
+      <a href="/users/sign_out" data-method="delete"  v-on:click.native="userSignOut" v-if="user.session" class="dropdown-item">SignOut</a>
       <router-link to="/sign_in" v-if="!user.session" class="dropdown-item">SignIn</router-link>
       <router-link to="/sign_up" v-if="!user.session" class="dropdown-item">SignUp</router-link>
     </div>
