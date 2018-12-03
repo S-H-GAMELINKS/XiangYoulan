@@ -12,9 +12,9 @@
       <router-link to="/contact" class="dropdown-item">Contact</router-link>
       <router-link to="/posts" class="dropdown-item">Posts</router-link>
       <router-link to="/places" class="dropdown-item">Places</router-link>
-      <router-link to="/sign_in" class="dropdown-item">SignIn</router-link>
-      <router-link to="/sign_up" class="dropdown-item">SignUp</router-link>
-      <span v-on:click="userSignOut" class="dropdown-item">SignOut</span>
+      <router-link to="/" v-on:click="userSignOut" v-if="user.session" class="dropdown-item">SignOut</router-link>
+      <router-link to="/sign_in" v-if="!user.session" class="dropdown-item">SignIn</router-link>
+      <router-link to="/sign_up" v-if="!user.session" class="dropdown-item">SignUp</router-link>
     </div>
   </div>
   <form class="form-inline my-2 my-lg-0">
@@ -34,11 +34,13 @@ import { error } from 'util';
 export default {
   data: function() {
     return {
-      keyword: ""
+      keyword: "",
+      user: this.$store.state.user
     }
   },
   mounted: function() {
     this.getSession();
+    console.log(this.user);
   },
   methods: {
     userSignOut: function() {
