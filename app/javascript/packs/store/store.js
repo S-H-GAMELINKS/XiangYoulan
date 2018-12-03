@@ -23,6 +23,10 @@ const store = new Vuex.Store({
 
             axios.get('/api/users/sessions').then((response) => {
                 if (response.data === null) {
+                    state.user.id = "";
+                    state.user.name = "";
+                    state.user.email = "";
+                    state.user.about = "";
                     state.user.session = false;
                 } else {
                     state.user.id = response.data.id;
