@@ -80,4 +80,9 @@ class ApiPlacesControllerTest < ActionDispatch::IntegrationTest
         post "/api/places/location", params: { name: "Paris" }
         assert_response :success
     end
+
+    test "should place follow" do
+        post "/api/places/follow/1", params: {id: 1}
+        assert_response :success
+    end
 end
