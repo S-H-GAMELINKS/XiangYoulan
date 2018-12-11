@@ -37,7 +37,7 @@ Rails.application.routes.draw do
     post '/places/hashtags' => 'places#hashtags'
     post '/places/search/hashtags' => 'places#search_hashtags'
     post '/places/location' => 'places#location'
-    post '/places/follow/:id' => 'places#follow'
+    post '/places/follow' => 'places#follow'
 
     put '/users' => 'users#update'
     get '/users/sessions' => 'users#user_session'
