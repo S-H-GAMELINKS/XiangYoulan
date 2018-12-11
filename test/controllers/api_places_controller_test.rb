@@ -1,6 +1,13 @@
 require "test_helper"
 
 class ApiPlacesControllerTest < ActionDispatch::IntegrationTest
+    include Devise::Test::IntegrationHelpers
+
+    def setup
+        @user = users( :dummy )
+        sign_in(@user)
+    end
+
     test "should get index" do
         get "/api/places"
         assert_response :success

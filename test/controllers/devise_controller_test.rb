@@ -3,7 +3,7 @@ require "test_helper"
 class DeviseControllerTest < ActionDispatch::IntegrationTest
   test "should sign up user" do
     post "/users", params: { user: { name: "S.H.", about: "test", email: "test@hoge.com", password: "testhogehoge", password_confirmation: "testhogehoge" }}
-    assert_equal true, User.first.email == "test@hoge.com"
+    assert_equal true, User.last.email == "test@hoge.com"
   end
 
   test "should sign in user" do
