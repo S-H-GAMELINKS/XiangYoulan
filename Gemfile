@@ -55,6 +55,9 @@ gem 'gon'
 # Using Dotenv
 gem 'dotenv-rails'
 
+# Using Socialization
+gem 'socialization'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
