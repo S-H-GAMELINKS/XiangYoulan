@@ -97,4 +97,9 @@ class ApiPlacesControllerTest < ActionDispatch::IntegrationTest
         post "/api/places/unfollow", params: {id: 1}
         assert_response :success
     end
+
+    test "should place is followed?" do
+        post "/api/palces/followed", params: {id: 1}
+        assert_response :success
+    end
 end
