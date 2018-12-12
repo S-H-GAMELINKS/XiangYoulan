@@ -88,6 +88,19 @@ export default {
             }, (error) => {
                 alert(error);
             })
+        },
+        unfollowPlace: function() {
+            axios.defaults.headers['X-CSRF-TOKEN'] = $('meta[name=csrf-token]').attr('content');
+            axios.defaults.headers['content-type'] = 'application/json';
+
+            const id = String(this.$route.path).replace(/\/places\//, '');
+
+            axios.post('/api/places/unfollow', {id: id}).then((response) => {
+                this.followable = response.data;
+                this.$forceUpdate();
+            }, (error) => {
+                alert(error);
+            })
         }
     }
 }
