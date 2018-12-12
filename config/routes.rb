@@ -39,6 +39,7 @@ Rails.application.routes.draw do
     post '/places/location' => 'places#location'
     post '/places/follow' => 'places#follow'
     post '/places/unfollow' => 'places#unfollow'
+    post '/palces/followed' => 'palces#followed'
 
     put '/users' => 'users#update'
     get '/users/sessions' => 'users#user_session'
