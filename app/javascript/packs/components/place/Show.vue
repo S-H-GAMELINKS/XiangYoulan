@@ -50,6 +50,7 @@ export default {
     mounted: function() {
         this.getPlace();
         this.getHashTags();
+        this.getPlaceFollowed();
     },
     methods: {
         getPlace: function() {
@@ -72,6 +73,19 @@ export default {
                 for(var i = 0; i < response.data.length; i++) {
                     this.hashtags.push(response.data[i]);
                 }
+            }, (error) => {
+                alert(error);
+            })
+        },
+        getPlaceFollowed: function() {
+            axios.defaults.headers['X-CSRF-TOKEN'] = $('meta[name=csrf-token]').attr('content');
+            axios.defaults.headers['content-type'] = 'application/json';
+
+            const id = String(this.$route.path).replace(/\/places\//, '');
+
+            axios.post('/api/places/followed', {id: id}).then((response) => {
+                this.followable = response.data;
+                this.$forceUpdate();
             }, (error) => {
                 alert(error);
             })
