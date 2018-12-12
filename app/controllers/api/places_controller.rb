@@ -1,5 +1,5 @@
 class Api::PlacesController < ApplicationController
-    before_action :set_place, only: [:show, :edit, :follow, :unfollow, :hashtags, :update, :destroy]
+    before_action :set_place, only: [:show, :edit, :follow, :unfollow, :followed, :hashtags, :update, :destroy]
 
     # Pagenation Content Num
     PER = 20
@@ -39,6 +39,11 @@ class Api::PlacesController < ApplicationController
     def location
       @location = Geocoder.search(params[:name])
       render json: @location.first.coordinates
+    end
+
+    # GET /api/places/followed
+    def followed
+      render json: current_user.follows?(@place)
     end
 
     # POST /api/places/follow
