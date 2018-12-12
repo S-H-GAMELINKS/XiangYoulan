@@ -1,6 +1,13 @@
 require "test_helper"
 
 class ApiPlacesControllerTest < ActionDispatch::IntegrationTest
+    include Devise::Test::IntegrationHelpers
+
+    def setup
+        @user = users( :dummy )
+        sign_in(@user)
+    end
+
     test "should get index" do
         get "/api/places"
         assert_response :success
@@ -78,6 +85,21 @@ class ApiPlacesControllerTest < ActionDispatch::IntegrationTest
     
     test "should place lng & lat get" do
         post "/api/places/location", params: { name: "Paris" }
+        assert_response :success
+    end
+
+    test "should place follow" do
+        post "/api/places/follow", params: {id: 1}
+        assert_response :success
+    end
+
+    test "should place unfollow" do
+        post "/api/places/unfollow", params: {id: 1}
+        assert_response :success
+    end
+
+    test "should place is followed?" do
+        post "/api/places/followed", params: {id: 1}
         assert_response :success
     end
 end
