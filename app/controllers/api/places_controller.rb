@@ -1,5 +1,5 @@
 class Api::PlacesController < ApplicationController
-    before_action :set_place, only: [:show, :edit, :follow, :hashtags, :update, :destroy]
+    before_action :set_place, only: [:show, :edit, :follow, :unfollow, :hashtags, :update, :destroy]
 
     # Pagenation Content Num
     PER = 20
@@ -47,6 +47,15 @@ class Api::PlacesController < ApplicationController
         render json: true
       else
         render json: current_user.follow!(@place)
+      end
+    end
+
+    # POST /api/places/follow
+    def unfollow
+      if current_user.follows?(@place)
+        render json: current_user.unfollow!(@place)
+      else
+        render json: true
       end
     end
   
