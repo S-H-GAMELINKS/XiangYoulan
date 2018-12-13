@@ -88,7 +88,7 @@ export default {
                     alert("Can't be black in Title or Content!!");
                 } else {
                     alert("Success!");
-                    this.$router.push({path: '/posts'});
+                    this.$router.push({name: 'places_show'});
                 }
             }, (error) => {
                 alert(error);
@@ -106,7 +106,7 @@ export default {
                     alert("Can't be black in Title or Content!!");
                 } else {
                     alert("Success!");
-                    this.$router.push({path: '/posts'});
+                    this.$router.push({name: 'places_show'});
                 }
             }, (error) => {
                 alert(error);
