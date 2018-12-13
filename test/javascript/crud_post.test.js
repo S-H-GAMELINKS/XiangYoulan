@@ -7,7 +7,15 @@ import Form from 'components/post/Form';
 
 describe('CRUD Post', () => {
     it('should render Index', () => {
-        const wrapper = shallowMount(Index);
+        const $route = {
+            path: 'places/1'
+        }
+
+        const wrapper = shallowMount(Index, {
+            mocks: {
+              $route
+            }
+        });
         expect(wrapper).not.toBeNull();
     });
 

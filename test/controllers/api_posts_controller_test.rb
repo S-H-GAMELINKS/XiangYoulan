@@ -22,12 +22,12 @@ class ApiControllerTest < ActionDispatch::IntegrationTest
     end
 
     test "should post create" do
-        post "/api/posts", params: {post: {title: "test", content: "test", tags: ""}}
+        post "/api/posts", params: {post: {title: "test", content: "test", tags: "", place_id: 1}}
         assert_response :success
     end
 
     test "should post create using hashtag" do
-        post "/api/posts", params: {post: {title: "test", content: "test", tags: "#tags #example"}}
+        post "/api/posts", params: {post: {title: "test", content: "test", tags: "#tags #example", place_id: 1}}
         assert_response :success
     end
 

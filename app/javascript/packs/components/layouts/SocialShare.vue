@@ -45,14 +45,14 @@ export default {
     methods: {
         checkAddress: function() {
             const url = String(this.$route.path);
-            if(url.match(/places/)) {
-                this.placable = true;
-            } else {
+            if(url.match(/\/places\/\d\/posts/)) {
                 this.postable = true;
+            } else {
+                this.placable = true;
             }
         },
         getPost: function() {
-            const id = String(this.$route.path).replace(/\/posts\//, '');
+            const id = String(this.$route.path).replace(/\/places\/\d+\/posts\//, '');
             axios.get('/api/posts/' + id).then((response) => {
                 this.title = response.data.title;
                 this.content = response.data.content;

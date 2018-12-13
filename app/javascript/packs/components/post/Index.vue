@@ -2,10 +2,10 @@
     <div>
         <div class="container">
             <p v-for="(post, key, index) in posts" :key=index>
-                <router-link :to="{name: 'posts_show', params: {id: post.id}}">{{post.title}}</router-link>
-                <router-link :to="{name: 'posts_edits', params: {id: post.id}}" >Edit</router-link>
+                <router-link :to="{name: 'posts_show', params: {post_id: post.id}}">{{post.title}}</router-link>
+                <router-link :to="{name: 'posts_edits', params: {post_id: post.id}}" >Edit</router-link>
             </p>
-            <router-link to="/posts/new" >New</router-link>
+            <router-link class="btn btn-primary" :to="{name: 'posts_new'}" >New Post</router-link>
             <paginate
                 v-model="pages"
                 :page-count="pageCount"
@@ -39,7 +39,9 @@ export default {
     },
     methods: {
         getPageCounts: function() {
-            axios.get('/api/posts').then((response) => {
+            const place_id = String(this.$route.path).replace(/\/places\//, '')
+
+            axios.get('/api/posts', {id: place_id}).then((response) => {
 
                 let counter = 0;
 
@@ -58,7 +60,9 @@ export default {
 
             this.posts.length = 0;
 
-            axios.post('/api/posts/pagenation', {page: this.pages}).then((response) => {
+            const place_id = String(this.$route.path).replace(/\/places\//, '')
+
+            axios.post('/api/posts/pagenation', {page: this.pages, place_id: place_id}).then((response) => {
                 for(var i = 0; i < response.data.length; i++) {
                     this.posts.push(response.data[i]);
                 }
