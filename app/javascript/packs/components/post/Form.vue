@@ -69,7 +69,7 @@ export default {
             }
         },
         getPost: function() {
-            const id = String(this.$route.path).replace(/\/posts\//, '').replace(/\/edit/, '');
+            const id = String(this.$route.path).replace(/\/places\/\d+\/posts\//, '').replace(/\/edit/, '');
 
             axios.get('/api/posts/' + id).then((response) => {
                 this.title = response.data.title;
@@ -98,7 +98,7 @@ export default {
             axios.defaults.headers['X-CSRF-TOKEN'] = $('meta[name=csrf-token]').attr('content');
             axios.defaults.headers['content-type'] = 'application/json';
 
-            const id = String(this.$route.path).replace(/\/posts\//, '').replace(/\/edit/, '');
+            const id = String(this.$route.path).replace(/\/places\/\d+\/posts\//, '').replace(/\/edit/, '');
 
             axios.put('/api/posts/' + id, {post: {title: this.title, content: this.content, tags: this.hashtags}}).then((response) => {
 
@@ -116,7 +116,7 @@ export default {
             axios.defaults.headers['X-CSRF-TOKEN'] = $('meta[name=csrf-token]').attr('content');
             axios.defaults.headers['content-type'] = 'application/json';
 
-            const id = String(this.$route.path).replace(/\/posts\//, '').replace(/\/edit/, '');
+            const id = String(this.$route.path).replace(/\/places\/\d+\/posts\//, '').replace(/\/edit/, '');
             axios.post('/api/posts/hashtags', {id: id}).then((response) => {
                 this.hashtags = response.data.join(' ');
             }, (error) => {
