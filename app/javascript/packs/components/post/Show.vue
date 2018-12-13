@@ -33,7 +33,7 @@ export default {
     },
     methods: {
         getPost: function() {
-            const id = String(this.$route.path).replace(/\/posts\//, '');
+            const id = String(this.$route.path).replace(/\/places\/\d+\/posts\//, '');
             axios.get('/api/posts/' + id).then((response) => {
                 this.title = response.data.title;
                 this.content = response.data.content;
@@ -45,7 +45,7 @@ export default {
             axios.defaults.headers['X-CSRF-TOKEN'] = $('meta[name=csrf-token]').attr('content');
             axios.defaults.headers['content-type'] = 'application/json';
 
-            const id = String(this.$route.path).replace(/\/posts\//, '');
+            const id = String(this.$route.path).replace(/\/places\/\d+\/posts\//, '')
             axios.post('/api/posts/hashtags', {id: id}).then((response) => {
                 for(var i = 0; i < response.data.length; i++) {
                     this.hashtags.push(response.data[i]);

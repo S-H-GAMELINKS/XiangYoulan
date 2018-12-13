@@ -6,7 +6,7 @@
         <button class="btn btn-primary" type="submit" v-else v-on:click="followPlace">Follow</button>
         <p><h2>Content</h2></p>
         <p v-html="content"></p>
-        <router-link class="btn btn-primary" :to="{name: 'posts_new'}">New Post</router-link>
+        <posts-index></posts-index>
         <div v-for="(tag, key, index) in hashtags" :key=index>
             <router-link :to="{name: 'hashtags', params: {id: tag}}">{{tag}}</router-link>
         </div>
@@ -31,6 +31,7 @@
 import axios from 'axios';
 import SocialShare from '../layouts/SocialShare.vue';
 import $ from 'jquery';
+import PostsIndex from '../post/Index.vue';
 
 export default {
     data: function() {
@@ -46,7 +47,8 @@ export default {
         }
     },
     components: {
-        SocialShare
+        'social-share': SocialShare,
+        'posts-index': PostsIndex
     },
     mounted: function() {
         this.getPlace();
