@@ -4,15 +4,15 @@ Rails.application.routes.draw do
   get "/contact", to: "web#index"
 
   get "/posts", to: "web#index"
-  get "/posts/:id", to: "web#index"
-  get "/posts/:id/edit", to: "web#index"
-  get "/posts/new", to: "web#index"
   get "/search/:id", to: "web#index"
 
   get "/places", to: "web#index"
   get "/places/:id", to: "web#index"
   get "/places/:id/edit", to: "web#index"
   get "/places/new", to: "web#index"
+  get "/places/:id/posts/:post_id", to: "web#index"
+  get "/places/:id/posts/:post_id/edit", to: "web#index"
+  get "/places/:id/posts/new", to: "web#index"
 
   get "/hashtags/:id", to: "web#index"
 
