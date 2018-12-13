@@ -82,7 +82,9 @@ export default {
             axios.defaults.headers['X-CSRF-TOKEN'] = $('meta[name=csrf-token]').attr('content');
             axios.defaults.headers['content-type'] = 'application/json';
 
-            axios.post('/api/posts', {post: {title: this.title, content: this.content, tags: this.hashtags}}).then((response) => {
+            const place_id = String(this.$route.path).replace(/\/places\//, '').replace(/\/posts\/\d+/, '').replace(/\/edit/, '');
+
+            axios.post('/api/posts', {post: {title: this.title, content: this.content, tags: this.hashtags, place_id: place_id}}).then((response) => {
 
                 if (this.title === "" || this.content === "") {
                     alert("Can't be black in Title or Content!!");
@@ -99,8 +101,9 @@ export default {
             axios.defaults.headers['content-type'] = 'application/json';
 
             const id = String(this.$route.path).replace(/\/places\/\d+\/posts\//, '').replace(/\/edit/, '');
+            const place_id = String(this.$route.path).replace(/\/places\//, '').replace(/\/posts\/\d+/, '').replace(/\/edit/, '');
 
-            axios.put('/api/posts/' + id, {post: {title: this.title, content: this.content, tags: this.hashtags}}).then((response) => {
+            axios.put('/api/posts/' + id, {post: {title: this.title, content: this.content, tags: this.hashtags, place_id: place_id}}).then((response) => {
 
                 if (this.title === "" || this.content === "") {
                     alert("Can't be black in Title or Content!!");
