@@ -6,6 +6,7 @@
         <button class="btn btn-primary" type="submit" v-else v-on:click="followPlace">Follow</button>
         <p><h2>Content</h2></p>
         <p v-html="content"></p>
+        <router-link class="btn btn-primary" :to="{name: 'posts_new'}">New Post</router-link>
         <div v-for="(tag, key, index) in hashtags" :key=index>
             <router-link :to="{name: 'hashtags', params: {id: tag}}">{{tag}}</router-link>
         </div>
