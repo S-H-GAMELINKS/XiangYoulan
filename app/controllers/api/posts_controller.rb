@@ -1,5 +1,6 @@
 class Api::PostsController < ApplicationController
     before_action :set_post, only: [:show, :edit, :hashtags, :update, :destroy]
+    before_action :set_post_with_place, only: [:index, :pagenation]
 
     # Pagenation Content Num
     PER = 20
@@ -7,7 +8,6 @@ class Api::PostsController < ApplicationController
     # GET /api/posts
     # GET /api/posts.json
     def index
-      @posts = Post.all
       render json: @posts
     end
 
@@ -31,7 +31,7 @@ class Api::PostsController < ApplicationController
 
     # POST /api/posts/pagenation
     def pagenation
-      @posts = Post.page(params[:page]).per(PER)
+      @posts = @posts.page(params[:page]).per(PER)
       render json: @posts
     end
     # POST /api/posts/search
@@ -92,6 +92,10 @@ class Api::PostsController < ApplicationController
       # Use callbacks to share common setup or constraints between actions.
       def set_post
         @post = Post.find(params[:id])
+      end
+
+      def set_post_with_place
+        @posts = Post.all.where(place_id: params[:place_id])
       end
   
       # Never trust parameters from the scary internet, only allow the white list through.

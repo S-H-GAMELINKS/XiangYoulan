@@ -39,7 +39,9 @@ export default {
     },
     methods: {
         getPageCounts: function() {
-            axios.get('/api/posts').then((response) => {
+            const place_id = String(this.$route.path).replace(/\/places\//, '')
+
+            axios.get('/api/posts', {id: place_id}).then((response) => {
 
                 let counter = 0;
 
@@ -58,7 +60,9 @@ export default {
 
             this.posts.length = 0;
 
-            axios.post('/api/posts/pagenation', {page: this.pages}).then((response) => {
+            const place_id = String(this.$route.path).replace(/\/places\//, '')
+
+            axios.post('/api/posts/pagenation', {page: this.pages, place_id: place_id}).then((response) => {
                 for(var i = 0; i < response.data.length; i++) {
                     this.posts.push(response.data[i]);
                 }

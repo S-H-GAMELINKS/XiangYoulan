@@ -1,4 +1,5 @@
 class Place < ApplicationRecord
+    has_many :posts
     validates :name, presence: true
     validates :content, presence: true
     acts_as_taggable
