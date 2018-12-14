@@ -3,7 +3,7 @@
         <div class="container">
             <p v-for="(place, key, index) in places" :key=index>
                 <router-link :to="{name: 'places_show', params: {id: place.id}}">{{place.name}}</router-link>
-                <router-link :to="{name: 'places_edits', params: {id: place.id}}" v-if='user.id == place.id' >Edit</router-link>
+                <router-link :to="{name: 'places_edits', params: {id: place.id}}" v-if='user.id == place.user_id' >Edit</router-link>
                 <router-link to="/places" v-if='user.id == place.user_id' v-on:click.native="deletePlace(place.id)" >Delete</router-link>
             </p>
             <router-link to="/places/new" >New</router-link>
