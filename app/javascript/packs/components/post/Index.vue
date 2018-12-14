@@ -30,7 +30,8 @@ export default {
             posts: [],
             pages: 1,
             pageCount: 0,
-            pagePer: 20
+            pagePer: 20,
+            user: this.$store.state.user
         }
     },
     mounted: function() {
