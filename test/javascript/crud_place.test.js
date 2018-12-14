@@ -25,13 +25,23 @@ describe('CRUD Place', () => {
 
     it('should render Show', () => {
 
+        const $store = {
+            state: {
+                user: {
+                    id: 1,
+                    session: true
+                }
+            }
+        }
+
         const $route = {
             path: '/places/1'
         }
 
         const wrapper = shallowMount(Show, {
             mocks: {
-              $route
+              $route,
+              $store
             }
         });
         expect(wrapper).not.toBeNull();
