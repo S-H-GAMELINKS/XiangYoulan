@@ -118,6 +118,7 @@ class Api::PlacesController < ApplicationController
     # DELETE /api/places/1
     # DELETE /api/places/1.json
     def destroy
+      Post.destroy(@place.post_ids)
       render json: @place.destroy
     end
   
