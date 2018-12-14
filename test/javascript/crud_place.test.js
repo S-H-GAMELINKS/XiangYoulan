@@ -6,8 +6,20 @@ import Edit from 'components/place/Edit';
 import Form from 'components/place/Form';
 
 describe('CRUD Place', () => {
+    const $store = {
+        state: {
+            user: {
+                id: 1
+            }
+        }
+    }
+
     it('should render Index', () => {
-        const wrapper = shallowMount(Index);
+        const wrapper = shallowMount(Index, {
+            mocks: {
+                $store
+            }
+        });
         expect(wrapper).not.toBeNull();
     });
 

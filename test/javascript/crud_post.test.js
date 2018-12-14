@@ -11,9 +11,18 @@ describe('CRUD Post', () => {
             path: 'places/1'
         }
 
+        const $store = {
+            state: {
+                user: {
+                    id: 1
+                }
+            }
+        }
+
         const wrapper = shallowMount(Index, {
             mocks: {
-              $route
+              $route,
+              $store
             }
         });
         expect(wrapper).not.toBeNull();

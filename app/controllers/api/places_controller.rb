@@ -86,6 +86,8 @@ class Api::PlacesController < ApplicationController
     def create
       @place = Place.new(place_params)
 
+      @place.user_id = current_user.id
+
       add_tags
       
       if @place.save
@@ -101,6 +103,8 @@ class Api::PlacesController < ApplicationController
     def update
 
       @place.tags.destroy_all
+
+      @place.user_id = current_user.id
 
       add_tags
 
