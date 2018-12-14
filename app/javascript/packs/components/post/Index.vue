@@ -3,7 +3,7 @@
         <div class="container">
             <p v-for="(post, key, index) in posts" :key=index>
                 <router-link :to="{name: 'posts_show', params: {post_id: post.id}}">{{post.title}}</router-link>
-                <router-link :to="{name: 'posts_edits', params: {post_id: post.id}}" >Edit</router-link>
+                <router-link :to="{name: 'posts_edits', params: {post_id: post.id}}" v-if='user.id == post.id' >Edit</router-link>
             </p>
             <router-link class="btn btn-primary" :to="{name: 'posts_new'}" >New Post</router-link>
             <paginate
