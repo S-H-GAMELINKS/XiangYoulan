@@ -4,6 +4,7 @@
             <p v-for="(post, key, index) in posts" :key=index>
                 <router-link :to="{name: 'posts_show', params: {post_id: post.id}}">{{post.title}}</router-link>
                 <router-link :to="{name: 'posts_edits', params: {post_id: post.id}}" v-if='user.id == post.id' >Edit</router-link>
+                <router-link :to="{name: 'places_show'}" v-if='user.id == post.id' v-on:click.native="deletePost(post.id)" >Delete</router-link>
             </p>
             <router-link class="btn btn-primary" :to="{name: 'posts_new'}" >New Post</router-link>
             <paginate
@@ -73,6 +74,19 @@ export default {
                 console.log(error);
             })
         },
+        deletePost: function(post_id) {
+            axios.defaults.headers['X-CSRF-TOKEN'] = $('meta[name=csrf-token]').attr('content');
+            axios.defaults.headers['content-type'] = 'application/json';
+
+            axios.delete('/api/posts/' + String(post_id)).then((response) => {
+                this.getPageCounts();
+                this.getPosts();
+
+                this.$forceUpdate();
+            }, (error) => {
+                console.log(error);
+            })
+        }
     }
 
 }
