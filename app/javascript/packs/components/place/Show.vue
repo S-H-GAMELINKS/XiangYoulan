@@ -43,7 +43,8 @@ export default {
                 lat: 0.0,
                 lng: 0.0
             },
-            followable: false
+            followable: false,
+            user: this.$store.state.user
         }
     },
     components: {
@@ -53,7 +54,9 @@ export default {
     mounted: function() {
         this.getPlace();
         this.getHashTags();
-        this.getPlaceFollowed();
+        if(this.user.session == true) {
+            this.getPlaceFollowed();
+        }
     },
     methods: {
         getPlace: function() {
