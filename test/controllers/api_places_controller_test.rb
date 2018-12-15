@@ -102,4 +102,9 @@ class ApiPlacesControllerTest < ActionDispatch::IntegrationTest
         post "/api/places/followed", params: {id: 1}
         assert_response :success
     end
+
+    test "should post now place info" do
+        post "/api/places/now", params: {lat: 35.47576255, lng: 133.050605829669}
+        assert_response :success
+    end
 end
