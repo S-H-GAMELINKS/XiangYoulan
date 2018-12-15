@@ -2,6 +2,7 @@ import { shallowMount } from "@vue/test-utils";
 import Index from 'components/web/Index';
 import About from 'components/web/About';
 import Contact from 'components/web/Contact';
+import NowPlace from 'components/web/NowPlace';
 
 describe('Test Web', () => {
     it('should render Web/Index', () => {
@@ -16,6 +17,11 @@ describe('Test Web', () => {
 
     it('should render Web/Contact', () => {
         const wrapper = shallowMount(Contact);
+        expect(wrapper).not.toBeNull();
+    });
+
+    it('should render Web/NowPlace', () => {
+        const wrapper = shallowMount(NowPlace);
         expect(wrapper).not.toBeNull();
     });
 })
