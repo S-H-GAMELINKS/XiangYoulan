@@ -9,7 +9,7 @@ class ApiUsersControllerTest < ActionDispatch::IntegrationTest
     end
 
     test "should get activity feed" do
-        post "/api/users/feed"
+        get "/api/users/feed"
         assert_response :success
     end
 end
