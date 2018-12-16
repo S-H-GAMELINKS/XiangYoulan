@@ -3,6 +3,9 @@ class Api::PlacesController < ApplicationController
 
     # Pagenation Content Num
     PER = 20
+
+    # Search Area Num
+    AREA = 3
   
     # GET /api/places
     # GET /api/places.json
@@ -62,6 +65,12 @@ class Api::PlacesController < ApplicationController
       else
         render json: true
       end
+    end
+
+    # POST /api/places/now
+    def now
+      @places = Place.within(AREA, :origin => [params[:lat], params[:lng]])
+      render json: @places
     end
   
     # GET /api/places/1
