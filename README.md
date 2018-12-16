@@ -1,24 +1,11 @@
-# README
+# Xiang Youlan
+## 概要
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+観光した先の名所や近所の商店街にあるお店などのスポット情報をシェアできるWebアプリケーションです
 
-Things you may want to cover:
+## デプロイ
 
-* Ruby version
 
-* System dependencies
+## ライセンス
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+[MIT](./LICENSE)
