@@ -5,7 +5,7 @@ class Api::PlacesController < ApplicationController
     PER = 20
 
     # Search Area Num
-    AREA = 3
+    AREA = 5
   
     # GET /api/places
     # GET /api/places.json
