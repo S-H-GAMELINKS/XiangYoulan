@@ -6,7 +6,7 @@
                 <router-link :to="{name: 'posts_edits', params: {post_id: post.id}}" v-if='user.id == post.user_id' >Edit</router-link>
                 <router-link :to="{name: 'places_show'}" v-if='user.id == post.user_id' v-on:click.native="deletePost(post.id)" >Delete</router-link>
             </p>
-            <router-link class="btn btn-primary" :to="{name: 'posts_new'}" >New Post</router-link>
+            <router-link class="btn btn-primary" v-if='user.session' :to="{name: 'posts_new'}" >New Post</router-link>
             <paginate
                 v-model="pages"
                 :page-count="pageCount"
