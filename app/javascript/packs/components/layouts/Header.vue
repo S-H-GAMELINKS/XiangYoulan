@@ -11,7 +11,6 @@
       <router-link to="/about" class="dropdown-item">About</router-link>
       <router-link to="/contact" class="dropdown-item">Contact</router-link>
       <router-link to="/now" class="dropdown-item">Now Places</router-link>
-      <router-link to="/posts" class="dropdown-item">Posts</router-link>
       <router-link to="/places" class="dropdown-item">Places</router-link>
       <router-link to="/users/feed" v-if="user.session" class="dropdown-item">Feeds</router-link>
       <router-link to="/users/mypages" v-if="user.session" class="dropdown-item">Profile</router-link>
