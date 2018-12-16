@@ -21,6 +21,13 @@ describe('Test Web', () => {
     });
 
     it('should render Web/NowPlace', () => {
+        const mockGeolocation = {
+            getCurrentPosition: jest.fn(),
+            watchPosition: jest.fn()
+          };
+          
+        global.navigator.geolocation = mockGeolocation;
+        
         const wrapper = shallowMount(NowPlace);
         expect(wrapper).not.toBeNull();
     });
