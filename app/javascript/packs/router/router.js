@@ -22,6 +22,7 @@ import Hashtags from '../components/hashtag/Hashtags.vue';
 import MyPages from '../components/user/MyPages.vue';
 import MyPagesEdit from '../components/user/Edit.vue';
 import UsersShow from '../components/user/Show.vue';
+import Feed from '../components/user/Feed.vue';
 import SignUp from '../components/user/SignUp.vue';
 import SignIn from '../components/user/SignIn.vue';
 
