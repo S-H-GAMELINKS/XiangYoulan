@@ -5,6 +5,14 @@ class Api::UsersController < ApplicationController
         render json: current_user
     end
 
+    def feed
+        follow_place_id = current_user.followees(Place).map{|p| p.id}
+
+        @activities = PublicActivity::Activity.order("created_at DESC").where(owner_type: "Place", owner_id: follow_place_id).all
+
+        render json: @activities
+    end
+
     def show
         render json: @user
     end

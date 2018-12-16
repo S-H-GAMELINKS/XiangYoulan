@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 
   get "/users/mypages", to: "web#index"
   get "/users/mypages/edit", to: "web#index"
+  get "/users/feed", to: "web#index"
   get "/users/:id", to: "web#index"
 
   devise_for :users
@@ -45,6 +46,7 @@ Rails.application.routes.draw do
 
     put '/users' => 'users#update'
     get '/users/sessions' => 'users#user_session'
+    get '/users/feed' => 'users#feed'
     get '/users/:id' => 'users#show'
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

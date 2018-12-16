@@ -4,6 +4,7 @@ import Edit from 'components/user/Edit';
 import SignIn from 'components/user/SignIn';
 import SignUp from 'components/user/SignUp';
 import UsersShow from 'components/user/Show';
+import Feed from 'components/user/Feed';
 import Store from 'store/store';
 
 describe('Users pages', () => {
@@ -52,6 +53,11 @@ describe('Users pages', () => {
               $route
             }
         });
+        expect(wrapper).not.toBeNull();
+    });
+
+    it('should render User Feed', () => {
+        const wrapper = shallowMount(Feed);
         expect(wrapper).not.toBeNull();
     });
 });
