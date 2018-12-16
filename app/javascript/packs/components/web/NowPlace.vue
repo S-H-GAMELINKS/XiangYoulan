@@ -40,8 +40,8 @@ export default {
         getLocation: function() {
             navigator.geolocation.getCurrentPosition(
                 (position) => {
-                    this.location.lat = round(position.coords.latitude, 8);
-                    this.location.lng = round(position.coords.longitude, 8);
+                    this.location.lat = position.coords.latitude;
+                    this.location.lng = position.coords.longitude;
                     console.log(this.location);
                 },
                 (error) => {
