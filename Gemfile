@@ -60,6 +60,9 @@ gem 'dotenv-rails'
 # Using Socialization
 gem 'socialization'
 
+# Using Activity Feed
+gem 'public_activity'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
