@@ -13,6 +13,7 @@
       <router-link to="/now" class="dropdown-item">Now Places</router-link>
       <router-link to="/posts" class="dropdown-item">Posts</router-link>
       <router-link to="/places" class="dropdown-item">Places</router-link>
+      <router-link to="/users/feed" v-if="user.session" class="dropdown-item">Feeds</router-link>
       <router-link to="/users/mypages" v-if="user.session" class="dropdown-item">Profile</router-link>
       <a href="/users/sign_out" data-method="delete"  v-on:click.native="userSignOut" v-if="user.session" class="dropdown-item">SignOut</a>
       <router-link to="/sign_in" v-if="!user.session" class="dropdown-item">SignIn</router-link>
