@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root "web#index"
   get "/about", to: "web#index"
   get "/contact", to: "web#index"
+  get "/now", to: "web#index"
 
   get "/posts", to: "web#index"
   get "/search/:id", to: "web#index"
@@ -40,6 +41,7 @@ Rails.application.routes.draw do
     post '/places/follow' => 'places#follow'
     post '/places/unfollow' => 'places#unfollow'
     post '/places/followed' => 'places#followed'
+    post '/places/now' => 'places#now'
 
     put '/users' => 'users#update'
     get '/users/sessions' => 'users#user_session'

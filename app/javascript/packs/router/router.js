@@ -4,6 +4,7 @@ import VueRouter from 'vue-router';
 import Index from '../components/web/Index.vue';
 import About from '../components/web/About.vue';
 import Contact from '../components/web/Contact.vue';
+import NowPlace from '../components/web/NowPlace.vue';
 
 import PostsIndex from '../components/post/Index.vue';
 import PostsCreate from '../components/post/Create.vue';
@@ -32,6 +33,7 @@ export default new VueRouter({
         { path: '/', component: Index },
         { path: '/about', component: About },
         { path: '/contact', component: Contact },
+        { path: '/now', component: NowPlace },
         { path: '/search/:id', component: PostsSearch, name: 'search'},
         { path: '/posts', component: PostsIndex },
         { path: '/places/:id/posts/new', component: PostsCreate, name: 'posts_new' },

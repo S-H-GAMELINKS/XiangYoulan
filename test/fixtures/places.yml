@@ -2,3 +2,5 @@ dummy:
   id: 1
   name: Ruby on Rails
   content: http://www.rubyonrails.org
+  latitude: 35.47576255
+  longitude: 133.050605829669
