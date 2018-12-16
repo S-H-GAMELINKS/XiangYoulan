@@ -46,6 +46,7 @@ export default new VueRouter({
         { path: '/hashtags/:id', component: Hashtags, name: 'hashtags'},
         { path: '/users/mypages', component: MyPages, name: 'mypages'},
         { path: '/users/mypages/edit', component: MyPagesEdit, name: 'mypages_edit'},
+        { path: '/users/feed', component: Feed, name: 'feed'},
         { path: '/users/:id', component: UsersShow, name: 'users_show'},
         { path: '/sign_up', component: SignUp, name: 'user_sign_up'},
         { path: '/sign_in', component: SignIn, name: 'user_sign_in'},
