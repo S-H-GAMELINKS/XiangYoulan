@@ -1,0 +1,23 @@
+
+{
+  "name": "Xiang Youlan",
+  "description": "Sharing Place info Web Application",
+  "website": "https://github.com/S-H-GAMELINKS/XiangYoulan",
+  "repository": "https://github.com/S-H-GAMELINKS/XiangYoulan",
+  "env": {
+    "GOOGLE_MAP_KEY": {
+      "description": "Google Map API Key",
+      "value": ""
+    }
+  },
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    },
+    {
+      "url": "heroku/ruby"
+    }
+  ],
+  "logo": "https://small-sharp-tool.com/logo.svg",
+  "success_url": "/"
+}
