@@ -46,8 +46,10 @@ gem 'kaminari'
 
 # Using Hashtag's
 gem 'acts-as-taggable-on'
+
 # Using Map
 gem 'geocoder'
+gem 'geokit-rails'
 
 # Using gon
 gem 'gon'
