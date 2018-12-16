@@ -5,6 +5,11 @@ class Api::UsersController < ApplicationController
         render json: current_user
     end
 
+    def feed
+        @activities = PublicActivity::Activity.all
+        render json: @activities
+    end
+
     def show
         render json: @user
     end
