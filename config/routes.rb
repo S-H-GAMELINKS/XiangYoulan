@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root "web#index"
   get "/about", to: "web#index"
   get "/contact", to: "web#index"
+  get "/now", to: "web#index"
 
   get "/posts", to: "web#index"
   get "/search/:id", to: "web#index"
