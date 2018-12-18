@@ -3,7 +3,7 @@ class Api::PostsController < ApplicationController
     before_action :set_post_with_place, only: [:index, :pagenation]
 
     # Pagenation Content Num
-    PER = 20
+    PER = 5
   
     # GET /api/posts
     # GET /api/posts.json
