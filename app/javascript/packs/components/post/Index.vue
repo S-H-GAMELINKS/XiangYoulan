@@ -31,7 +31,7 @@ export default {
             posts: [],
             pages: 1,
             pageCount: 0,
-            pagePer: 20,
+            pagePer: 5,
             user: this.$store.state.user
         }
     },
@@ -62,8 +62,6 @@ export default {
                 for(var i = 0; i < response.data.length; i++) {
                     this.posts.push(response.data[i]);
                 }
-
-                this.$forceUpdate();
             }, (error) => {
                 console.log(error);
             })
