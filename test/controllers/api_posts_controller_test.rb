@@ -82,4 +82,9 @@ class ApiControllerTest < ActionDispatch::IntegrationTest
         post "/api/posts/search/hashtags", params: {tag: "#test"}
         assert_response :success
     end
+
+    test "should post count" do
+        post "/api/posts/count", params: {place_id: 1}
+        assert_response :success
+    end
 end
