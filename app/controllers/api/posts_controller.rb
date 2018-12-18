@@ -1,6 +1,6 @@
 class Api::PostsController < ApplicationController
     before_action :set_post, only: [:show, :edit, :hashtags, :update, :destroy]
-    before_action :set_post_with_place, only: [:index, :pagenation]
+    before_action :set_post_with_place, only: [:count, :pagenation]
 
     # Pagenation Content Num
     PER = 5
@@ -9,6 +9,11 @@ class Api::PostsController < ApplicationController
     # GET /api/posts.json
     def index
       render json: @posts
+    end
+
+    # POST /api/posts/count
+    def count
+      render json: @posts.count
     end
 
     # POST /api/posts/search
