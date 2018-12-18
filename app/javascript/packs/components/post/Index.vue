@@ -43,8 +43,9 @@ export default {
         getPageCounts: function() {
             const place_id = String(this.$route.path).replace(/\/places\//, '')
 
-            axios.get('/api/posts', {place_id: place_id}).then((response) => {
+            axios.post('/api/posts/count', {place_id: place_id}).then((response) => {
                 this.pageCount = Math.ceil(response.data / this.pagePer);
+                console.log(this.pageCount)
             }, (error) => {
                 console.log(error);
             })
