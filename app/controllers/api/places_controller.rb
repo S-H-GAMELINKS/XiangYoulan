@@ -1,5 +1,6 @@
 class Api::PlacesController < ApplicationController
     before_action :set_place, only: [:show, :edit, :follow, :unfollow, :followed, :hashtags, :update, :destroy]
+    before_action :set_all_places, only: [:index, :count]
 
     # Pagenation Content Num
     PER = 20
@@ -10,13 +11,11 @@ class Api::PlacesController < ApplicationController
     # GET /api/places
     # GET /api/places.json
     def index
-      @places = Place.all
       render json: @places
     end
 
     # POST /api/posts/count
     def count
-      @places = Place.all
       render json: @posts.count
     end
 
@@ -141,6 +140,10 @@ class Api::PlacesController < ApplicationController
       # Use callbacks to share common setup or constraints between actions.
       def set_place
         @place = Place.find(params[:id])
+      end
+
+      def set_all_places
+        @places = Place.all
       end
   
       # Never trust parameters from the scary internet, only allow the white list through.
