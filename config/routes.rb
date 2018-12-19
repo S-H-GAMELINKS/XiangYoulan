@@ -44,7 +44,7 @@ Rails.application.routes.draw do
     post '/places/unfollow' => 'places#unfollow'
     post '/places/followed' => 'places#followed'
     post '/places/now' => 'places#now'
-    get '/posts/count' => 'posts#count'
+    get '/places/count' => 'places#count'
 
     put '/users' => 'users#update'
     get '/users/sessions' => 'users#user_session'
