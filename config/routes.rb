@@ -34,6 +34,7 @@ Rails.application.routes.draw do
     post '/posts/search/hashtags' => 'posts#search_hashtags'
     post '/posts/count' => 'posts#count'
 
+    get '/places/count' => 'places#count'
     resources :places
     post '/places/search' => 'places#search'
     post '/places/pagenation' => 'places#pagenation'
@@ -44,7 +45,6 @@ Rails.application.routes.draw do
     post '/places/unfollow' => 'places#unfollow'
     post '/places/followed' => 'places#followed'
     post '/places/now' => 'places#now'
-    get '/places/count' => 'places#count'
 
     put '/users' => 'users#update'
     get '/users/sessions' => 'users#user_session'
