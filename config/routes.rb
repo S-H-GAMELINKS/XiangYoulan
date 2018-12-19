@@ -34,6 +34,7 @@ Rails.application.routes.draw do
     post '/posts/search/hashtags' => 'posts#search_hashtags'
     post '/posts/count' => 'posts#count'
 
+    get '/places/count' => 'places#count'
     resources :places
     post '/places/search' => 'places#search'
     post '/places/pagenation' => 'places#pagenation'

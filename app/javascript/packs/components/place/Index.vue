@@ -33,7 +33,7 @@ export default {
             places: [],
             pages: 1,
             pageCount: 0,
-            pagePer: 20,
+            pagePer: 10,
             user: this.$store.state.user
         }
     },
@@ -43,15 +43,8 @@ export default {
     },
     methods: {
         getPageCounts: function() {
-            axios.get('/api/places').then((response) => {
-
-                let counter = 0;
-
-                for(var i = 0; i < response.data.length; i++) {
-                    counter++;
-                }
-
-                this.pageCount = Math.ceil(counter / this.pagePer);
+            axios.get('/api/places/count').then((response) => {
+                this.pageCount = Math.ceil(response.data / this.pagePer);
             }, (error) => {
                 console.log(error);
             })
@@ -62,10 +55,14 @@ export default {
 
             this.places.length = 0;
 
+            console.log(this.pages);
+
             axios.post('/api/places/pagenation', {page: this.pages}).then((response) => {
                 for(var i = 0; i < response.data.length; i++) {
                     this.places.push(response.data[i]);
                 }
+
+                console.log(response.data)
 
                 this.$forceUpdate();
             }, (error) => {
