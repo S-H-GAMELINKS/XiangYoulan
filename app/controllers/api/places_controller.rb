@@ -14,6 +14,12 @@ class Api::PlacesController < ApplicationController
       render json: @places
     end
 
+    # POST /api/posts/count
+    def count
+      @places = Place.all
+      render json: @posts.count
+    end
+
     # POST /api/places/search
     def search
       @q = Place.ransack(params[:q])
