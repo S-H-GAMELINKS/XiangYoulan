@@ -43,15 +43,8 @@ export default {
     },
     methods: {
         getPageCounts: function() {
-            axios.get('/api/places').then((response) => {
-
-                let counter = 0;
-
-                for(var i = 0; i < response.data.length; i++) {
-                    counter++;
-                }
-
-                this.pageCount = Math.ceil(counter / this.pagePer);
+            axios.get('/api/places/counts').then((response) => {
+                this.pageCount = Math.ceil(response.data / this.pagePer);
             }, (error) => {
                 console.log(error);
             })
