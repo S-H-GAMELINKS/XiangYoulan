@@ -16,7 +16,7 @@ class Api::PlacesController < ApplicationController
 
     # POST /api/posts/count
     def count
-      render json: @posts.count
+      render json: @places.count
     end
 
     # POST /api/places/search
