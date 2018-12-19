@@ -3,7 +3,7 @@ class Api::PlacesController < ApplicationController
     before_action :set_all_places, only: [:index, :count]
 
     # Pagenation Content Num
-    PER = 20
+    PER = 10
 
     # Search Area Num
     AREA = 5
@@ -39,7 +39,7 @@ class Api::PlacesController < ApplicationController
 
     # POST /api/places/pagenation
     def pagenation
-      @places = Place.page(params[:page]).per(PER)
+      @places = Place.all.page(params[:page]).per(PER)
       render json: @places
     end
 
