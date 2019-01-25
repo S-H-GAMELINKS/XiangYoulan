@@ -42,7 +42,6 @@ Rails.application.routes.draw do
     post '/places/search/hashtags' => 'places#search_hashtags'
     post '/places/location' => 'places#location'
     post '/places/follow' => 'places#follow'
-    post '/places/unfollow' => 'places#unfollow'
     post '/places/followed' => 'places#followed'
     post '/places/now' => 'places#now'
 
