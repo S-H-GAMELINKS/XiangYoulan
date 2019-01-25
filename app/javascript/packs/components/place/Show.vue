@@ -115,7 +115,7 @@ export default {
 
             const id = String(this.$route.path).replace(/\/places\//, '');
 
-            axios.post('/api/places/unfollow', {id: id}).then((response) => {
+            axios.post('/api/places/follow', {id: id}).then((response) => {
                 this.followable = response.data;
                 this.$forceUpdate();
             }, (error) => {
