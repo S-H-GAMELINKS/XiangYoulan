@@ -57,7 +57,7 @@ class Api::PlacesController < ApplicationController
     # POST /api/places/follow
     def follow
       if current_user.follows?(@place)
-        render json: true
+        render json: false
       else
         render json: current_user.follow!(@place)
       end
