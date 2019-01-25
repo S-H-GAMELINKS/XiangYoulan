@@ -63,15 +63,6 @@ class Api::PlacesController < ApplicationController
       end
     end
 
-    # POST /api/places/follow
-    def unfollow
-      if current_user.follows?(@place)
-        render json: !current_user.unfollow!(@place)
-      else
-        render json: true
-      end
-    end
-
     # POST /api/places/now
     def now
       @places = Place.within(AREA, :origin => [params[:lat], params[:lng]])
